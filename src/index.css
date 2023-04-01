@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*:root {*/
+/*  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;*/
+/*  line-height: 1.5;*/
+/*  font-weight: 400;*/
+
+/*  color-scheme: light dark;*/
+/*  color: rgba(255, 255, 255, 0.87);*/
+/*  background-color: #242424;*/
+
+/*  font-synthesis: none;*/
+/*  text-rendering: optimizeLegibility;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*  -webkit-text-size-adjust: 100%;*/
+/*}*/
+
+@layer components {
+  .sidebar-icons{
+    @apply relative flex items-center justify-center h-12 w-12 mx-auto mt-2 mb-2
+    bg-gray-800 text-indigo-700 hover:bg-indigo-900 hover:text-indigo-100
+    rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear hover:cursor-pointer;
+  }
+  .mw-parser-output{
+    @apply h-screen w-4/5 overflow-y-auto mx-auto
+  }
+
+  /* External links should be non intractable */
+  .mw-parser-output a[href*='//']{
+    @apply text-amber-700 pointer-events-none cursor-none
+  }
+
+  .mw-parser-output a{
+    @apply text-indigo-700
+  }
+
+  /*  todo: headers are not working??? from the official wiki stylesheet  */
+
+  .mw-parser-output .mw-headline { @apply font-semibold pb-52 }
+  .mw-parser-output h1{ @apply text-4xl }
+  .mw-parser-output h2{ @apply text-3xl }
+  .mw-parser-output h3{ @apply text-2xl }
+  .mw-parser-output h4{ @apply text-xl }
+
+}
