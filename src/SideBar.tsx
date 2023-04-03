@@ -1,5 +1,5 @@
-import {AcademicCapIcon, ClockIcon} from "@heroicons/react/24/solid";
 import {createContext, useState} from "react";
+import Timer from "./Timer";
 
 const StartArticleContext = createContext('');
 
@@ -7,14 +7,15 @@ const SideBar = () => {
     const [startArticle, setStartArticle] = useState('');
     const [endArticle, setEndArticle] = useState('');
 
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 600);
+
     return(
         <StartArticleContext.Provider value={startArticle}>
-            <div className="top-0 left-0 h-screen w-1/4 overflow-y-auto
-                        flex flex-col
-                        bg-gray-900 text-white shadow-lg" >
-                <AcademicCapIcon className="sidebar-icons"/>
-                {/*todo: form here to submit start end*/}
-                <ClockIcon className="sidebar-icons"/>
+            <div className="my-sidebar" >
+                <h1>Wikipedia Speedrun</h1>
+                <p>Test your knowledge of the world!</p>
+                <Timer autoStart={false} offset={0}/>
             </div>
         </StartArticleContext.Provider>
     );

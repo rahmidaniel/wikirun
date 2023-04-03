@@ -1,11 +1,11 @@
 import {useEffect, useRef, useState} from "react";
-import requestWikiArticle from "./Helper";
+import requestWikiArticle from "./utils/Helper";
 
 
 const WikiArticle = () => {
     const [html, setHtml] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    const [articleName, setArticleName] = useState('Flax');
+    const [articleName, setArticleName] = useState('CMYK_color_model');
 
 
     const wikiRef = useRef<HTMLDivElement>(null);
@@ -16,53 +16,54 @@ const WikiArticle = () => {
 
         if(event.target instanceof HTMLAnchorElement){
             // substring(6) : /wiki/Article => Article
-            // const name = event.target.pathname.substring(6);
-            // //
-            // if(!name.startsWith('File:'))
-            setArticleName(event.target.pathname.substring(6));
+            const name = event.target.pathname.substring(6);
+
+            // Deprecated: this was achieved with CSS a[href*=':']
+            // Filtering out wikipedia Portals and such
+            // if(!name.includes(':')){
+            //     setArticleName(name);
+            // }
+            setArticleName(name);
         }
     };
 
     const scrollToTop = () => {
-        // @ts-ignore
-        wikiRef.current.scrollIntoView({ behavior: 'smooth' });
+        wikiRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
+
+    requestWikiArticle(articleName).then(response => setHtml(response)).then(scrollToTop).then(() => setIsLoading(false));
 
     useEffect( () => {
         setIsLoading(true);
-
-        //todo: Cleaning the wiki page (References, Notes, ...)
-        requestWikiArticle(articleName).then(response => setHtml(response));
             //.then(()=> scrollToTop());
 
         // Null check
         if(!wikiRef.current){
-            setIsLoading(false);
+            setIsLoading(true);
             return;
         }
 
-        // References
-        wikiRef.current.querySelectorAll('.reference').forEach((element) => element.remove());
-        wikiRef.current.querySelectorAll('.reflist').forEach((element) => element.remove());
-        wikiRef.current.querySelectorAll('.plainlinks').forEach((element) => element.remove());
+        // References, Portals and other wikipedia elements
+        wikiRef.current.querySelector('#References')?.parentElement?.remove(); // todo: remove parent too
+        wikiRef.current.querySelectorAll('.reference, .reflist, .plainlinks, .portalbox, .noprint').forEach((element) => element.remove());
 
         // Attaching event listeners to all links
         const links = wikiRef.current.querySelectorAll('a');
-        links.forEach(link => {
+        links?.forEach(link => {
             link.addEventListener('click', handleClick)
         });
 
-        // Loading done
+        // // Loading done
         setIsLoading(false);
 
         // Removing listeners
         return () => {
-            links.forEach(link => {
+            links?.forEach(link => {
                 link.removeEventListener('click', handleClick)
             });
         };
 
-    }, [html, articleName]);
+    }, [html]);
 
 
     return (

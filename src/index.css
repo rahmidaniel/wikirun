@@ -2,47 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-/*:root {*/
-/*  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;*/
-/*  line-height: 1.5;*/
-/*  font-weight: 400;*/
-
-/*  color-scheme: light dark;*/
-/*  color: rgba(255, 255, 255, 0.87);*/
-/*  background-color: #242424;*/
-
-/*  font-synthesis: none;*/
-/*  text-rendering: optimizeLegibility;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  -moz-osx-font-smoothing: grayscale;*/
-/*  -webkit-text-size-adjust: 100%;*/
-/*}*/
-
 @layer components {
-  .sidebar-icons{
-    @apply relative flex items-center justify-center h-12 w-12 mx-auto mt-2 mb-2
-    bg-gray-800 text-indigo-700 hover:bg-indigo-900 hover:text-indigo-100
-    rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear hover:cursor-pointer;
+  .app{
+    @apply flex flex-col h-screen
   }
+
+  .my-navbar{
+    @apply navbar bg-base-100 h-16 shadow-2xl z-50 rounded-3xl;
+  }
+
+  .my-sidebar{
+    @apply flex-shrink-0 sticky h-screen top-0 w-1/4 overflow-hidden
+    flex flex-col bg-base-100 shadow-2xl
+    border-r border-primary dark:border-accent
+    prose text-center;
+  }
+
   .mw-parser-output{
-    @apply h-screen w-4/5 overflow-y-auto mx-auto
+    @apply flex-auto w-11/12 overflow-y-auto mx-auto my-8;
   }
 
   /* External links should be non intractable */
-  .mw-parser-output a[href*='//']{
-    @apply text-amber-700 pointer-events-none cursor-none
+  .mw-parser-output a[href*='//'],.mw-parser-output a[href*=':']{
+    @apply link-error pointer-events-none cursor-none;
   }
 
   .mw-parser-output a{
-    @apply text-indigo-700
+    @apply link-primary dark:link-accent;
   }
 
   /*  todo: headers are not working??? from the official wiki stylesheet  */
 
-  .mw-parser-output .mw-headline { @apply font-semibold pb-52 }
-  .mw-parser-output h1{ @apply text-4xl }
-  .mw-parser-output h2{ @apply text-3xl }
-  .mw-parser-output h3{ @apply text-2xl }
-  .mw-parser-output h4{ @apply text-xl }
+  .mw-parser-output h1{ @apply text-3xl font-semibold pt-4 pb-1 border-b border-b-base-content;}
+  .mw-parser-output h2{ @apply text-2xl font-semibold pt-4 pb-1 border-b border-b-base-content;}
+  .mw-parser-output h3{ @apply text-xl font-bold py-2;}
+  .mw-parser-output h4{ @apply font-bold py-2;}
+}
 
+/* Wiki styles were replicated to taste */
+
+.infobox {
+  @apply relative float-right clear-right ml-2 max-w-xs shadow-lg bg-base-100;
+}
+.infobox-title{
+  @apply font-bold text-xl;
+}
+
+.infobox-image img {
+  @apply mx-auto;
+}
+
+.infobox .summary{
+  @apply dark:!btn-accent !btn-primary;
+}
+
+.wikitable, table {
+  @apply table-zebra table-compact border-collapse my-4 border border-neutral;
+}
+
+.tleft, .floatleft {
+  @apply clear-left float-left m-2 bg-base-100;
+}
+
+.tright, .floatright {
+  @apply clear-right float-right m-2 bg-base-100;
+}
+
+.trow{
+  @apply flex justify-between
+}
+
+.tsingle{
+  @apply !w-2/5
+}
+
+.thumbinner {
+  @apply card card-bordered shadow-xl;
+}
+
+.thumbinner img {
+  @apply rounded-t-2xl bg-white;
+}
+
+.thumbcaption{
+  @apply m-2;
+}
+
+.gallery {
+  @apply flex flex-wrap justify-evenly mx-auto py-4;
+}
+
+.gallerycaption {
+  @apply font-extrabold flex-grow w-full text-center;
+}
+
+.gallerybox{
+  @apply card shadow-xl border m-4 flex-shrink-0 basis-auto;
+}
+.gallerytext{
+  @apply m-2 text-sm;
+}
+.gallery img {
+  @apply mx-auto rounded-t-2xl;
+}
+
+.navbox, .navbox th, .navbox tr td {
+  @apply !bg-base-100 !border-base-100 !table-zebra;
+}
+
+blockquote {
+  @apply mx-auto px-16;
+}
+
+/* inlining and inverting math equations for dark mode*/
+.mwe-math-fallback-image-inline {
+  @apply inline-block dark:invert-[1];
+}
+
+ul {
+  @apply list-disc ml-8;
+}
+
+ol {
+  @apply list-decimal ml-8;
+}
+
+dd {
+  margin-left: 1.6em;
+  margin-bottom: 0.1em;
+}
+
+p {
+  @apply mb-2
 }
