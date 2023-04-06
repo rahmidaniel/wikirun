@@ -1,12 +1,20 @@
-import {useEffect, useRef, useState} from "react";
-import requestWikiArticle from "./utils/Helper";
+import {useContext, useEffect, useRef, useState} from "react";
+import useWikiArticle from "../utils/wikipediaApi";
+import {ArticleContext} from "./App";
+import {CircularProgress} from "@mui/joy";
 
+export interface articleInfo {
+    title: string,
+    articleUri: string,
+    onClick: () => void;
+}
 
 const WikiArticle = () => {
+    const prop = useContext(ArticleContext);
+
     const [html, setHtml] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [articleName, setArticleName] = useState('CMYK_color_model');
-
 
     const wikiRef = useRef<HTMLDivElement>(null);
 
@@ -17,13 +25,10 @@ const WikiArticle = () => {
         if(event.target instanceof HTMLAnchorElement){
             // substring(6) : /wiki/Article => Article
             const name = event.target.pathname.substring(6);
-
-            // Deprecated: this was achieved with CSS a[href*=':']
-            // Filtering out wikipedia Portals and such
-            // if(!name.includes(':')){
-            //     setArticleName(name);
-            // }
             setArticleName(name);
+
+            // External onClick
+            prop.onHandle();
         }
     };
 
@@ -31,7 +36,14 @@ const WikiArticle = () => {
         wikiRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
 
-    requestWikiArticle(articleName).then(response => setHtml(response)).then(scrollToTop).then(() => setIsLoading(false));
+    useWikiArticle(articleName)
+        .then(response =>{
+            setHtml(response.html);
+            prop.articleUri = (response.articleUri);
+            prop.title = (response.title);
+        })
+        .then(scrollToTop)
+        .then(() => setIsLoading(false));
 
     useEffect( () => {
         setIsLoading(true);
@@ -68,7 +80,7 @@ const WikiArticle = () => {
 
     return (
         <>
-            {isLoading ? (<h1>Loading Article...</h1>) :
+            {isLoading ? (<CircularProgress color="primary" />) :
                 (<div ref={wikiRef} className="mw-parser-output" dangerouslySetInnerHTML={{ __html: html }}/>)}
         </>
     );
