@@ -14,7 +14,7 @@
   .my-sidebar{
     @apply flex-shrink-0 sticky h-screen top-0 w-1/4 overflow-hidden
     flex flex-col shadow-2xl
-    border-r dark:border-accent
+    border-r border-primary dark:border-accent
     prose text-center;
   }
 
@@ -73,11 +73,7 @@
 }
 
 .trow{
-  @apply flex justify-between
-}
-
-.tsingle{
-  @apply !w-2/5
+  @apply flex justify-between !w-96
 }
 
 .thumbinner {

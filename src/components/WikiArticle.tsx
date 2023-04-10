@@ -1,59 +1,50 @@
 import {useContext, useEffect, useRef, useState} from "react";
 import useWikiArticle from "../utils/wikipediaApi";
-import {ArticleContext} from "./App";
 import {CircularProgress} from "@mui/joy";
-
-export interface articleInfo {
-    title: string,
-    articleUri: string,
-    onClick: () => void;
-}
+import {ArticleContext} from "../utils/ArticleContext";
 
 const WikiArticle = () => {
-    const prop = useContext(ArticleContext);
+    const {currentArticle, updateArticle} = useContext(ArticleContext);
 
     const [html, setHtml] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    const [articleName, setArticleName] = useState('CMYK_color_model');
+    const [loadedArticleName, setLoadedArticleName] = useState('');
 
     const wikiRef = useRef<HTMLDivElement>(null);
-
-    // Redirecting wiki links, calling api
-    const handleClick = (event: MouseEvent) => {
-        event.preventDefault();
-
-        if(event.target instanceof HTMLAnchorElement){
-            // substring(6) : /wiki/Article => Article
-            const name = event.target.pathname.substring(6);
-            setArticleName(name);
-
-            // External onClick
-            prop.onHandle();
-        }
-    };
 
     const scrollToTop = () => {
         wikiRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
 
-    useWikiArticle(articleName)
-        .then(response =>{
-            setHtml(response.html);
-            prop.articleUri = (response.articleUri);
-            prop.title = (response.title);
-        })
-        .then(scrollToTop)
-        .then(() => setIsLoading(false));
+    // not sure if needed
 
+    // Loads current article
+    useEffect( ()=>{
+        if(currentArticle && currentArticle.title !== loadedArticleName)
+            useWikiArticle(currentArticle.link)
+                .then(response =>{
+                    setHtml(response.html);
+                    setLoadedArticleName(response.title);
+
+                    setIsLoading(false);
+                })
+    }, [currentArticle]);
+
+    // Cleans article and adds listeners
     useEffect( () => {
-        setIsLoading(true);
-            //.then(()=> scrollToTop());
-
-        // Null check
         if(!wikiRef.current){
             setIsLoading(true);
             return;
         }
+
+        const handleClick = (event: MouseEvent) => {
+            event.preventDefault();
+            if(event.target instanceof HTMLAnchorElement){
+                // substring(6) : /wiki/Article => Article
+                console.log(event.target.textContent);
+                updateArticle({title: event.target.title, link: event.target.pathname.substring(6)});
+            }
+        };
 
         // References, Portals and other wikipedia elements
         wikiRef.current.querySelector('#References')?.parentElement?.remove(); // todo: remove parent too
@@ -65,22 +56,24 @@ const WikiArticle = () => {
             link.addEventListener('click', handleClick)
         });
 
-        // // Loading done
+        scrollToTop();
         setIsLoading(false);
 
-        // Removing listeners
+        // Removing listeners on dismount
         return () => {
             links?.forEach(link => {
                 link.removeEventListener('click', handleClick)
             });
         };
 
-    }, [html]);
+    }, [updateArticle, html]);
 
 
     return (
         <>
-            {isLoading ? (<CircularProgress color="primary" />) :
+            {isLoading ?
+                (<CircularProgress color="primary" />)
+                :
                 (<div ref={wikiRef} className="mw-parser-output" dangerouslySetInnerHTML={{ __html: html }}/>)}
         </>
     );
