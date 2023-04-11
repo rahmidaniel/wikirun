@@ -1,6 +1,5 @@
 import {useContext, useEffect, useRef, useState} from "react";
-import useWikiArticle from "../utils/wikipediaApi";
-import {CircularProgress} from "@mui/joy";
+import {requestWikiArticle} from "../utils/wikipediaApi";
 import {ArticleContext} from "../utils/ArticleContext";
 
 const WikiArticle = () => {
@@ -20,22 +19,21 @@ const WikiArticle = () => {
 
     // Loads current article
     useEffect( ()=>{
-        if(currentArticle && currentArticle.title !== loadedArticleName)
-            useWikiArticle(currentArticle.link)
+        if(currentArticle && currentArticle.title !== loadedArticleName){
+            setIsLoading(true);
+            requestWikiArticle(currentArticle.link)
                 .then(response =>{
                     setHtml(response.html);
                     setLoadedArticleName(response.title);
 
                     setIsLoading(false);
                 })
+        }
     }, [currentArticle]);
 
     // Cleans article and adds listeners
     useEffect( () => {
-        if(!wikiRef.current){
-            setIsLoading(true);
-            return;
-        }
+        if(!wikiRef.current) return;
 
         const handleClick = (event: MouseEvent) => {
             event.preventDefault();
@@ -66,13 +64,16 @@ const WikiArticle = () => {
             });
         };
 
-    }, [updateArticle, html]);
+    }, [html]);
+
 
 
     return (
         <>
             {isLoading ?
-                (<CircularProgress color="primary" />)
+                (<div className="radial-progress" style={
+                    // @ts-ignore
+                    {"--value":70}}>70%</div>)
                 :
                 (<div ref={wikiRef} className="mw-parser-output" dangerouslySetInnerHTML={{ __html: html }}/>)}
         </>
