@@ -39,7 +39,7 @@ const WikiArticle = () => {
             event.preventDefault();
             if(event.target instanceof HTMLAnchorElement){
                 // substring(6) : /wiki/Article => Article
-                console.log(event.target.textContent);
+                //console.log(event.target.textContent);
                 updateArticle({title: event.target.title, link: event.target.pathname.substring(6)});
             }
         };

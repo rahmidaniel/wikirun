@@ -12,7 +12,7 @@
   }
 
   .my-sidebar{
-    @apply flex-shrink-0 sticky h-screen top-0 w-1/4 overflow-hidden
+    @apply flex-shrink-0 sticky h-screen top-0 w-1/6 min-w-fit px-4 overflow-hidden
     flex flex-col shadow-2xl
     border-r border-primary dark:border-accent
     prose text-center;
@@ -22,8 +22,8 @@
     @apply flex-auto w-11/12 overflow-y-auto mx-auto my-8;
   }
 
-   /*External links should be non intractable */
-  .mw-parser-output a[href*='//'],.mw-parser-output a[href*=':']{
+   /*External links should be non intractable, + new pages */
+  .mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new{
     @apply link-error dark:link-error pointer-events-none cursor-none;
   }
 

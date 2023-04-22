@@ -8,11 +8,15 @@ export interface Article{
 export interface ArticleContextProp {
     currentArticle: Article | null,
     articleList: Article[],
-    updateArticle: (newArticle: Article) => void
+    updateArticle: (newArticle: Article) => void,
+    startArticle: Article | null,
+    endArticle: Article | null,
+    startGame: (start: Article, end: Article)=> void
 }
 
 export const ArticleContext = createContext<ArticleContextProp>({
-    currentArticle: null,
+    endArticle: null, startArticle: null, currentArticle: null,
     articleList: [],
     updateArticle: () => {},
+    startGame(start: Article, end: Article): void {}
 });

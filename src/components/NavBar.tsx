@@ -21,7 +21,7 @@ const NavBar = () => {
     return(
         <div className="my-navbar">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl" href="">Wikipedia Speedrun a babiromnak</a>
+                <a className="btn btn-ghost normal-case text-xl" href="">Wikipedia Speedrun</a>
             </div>
             <label className="swap swap-rotate">
                 <input type="checkbox" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS" onChange={toggle}/>

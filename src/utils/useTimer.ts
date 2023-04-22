@@ -36,7 +36,7 @@ export const useTimer = (settings?: TimerSettings) => {
         }, 10)
     }
 
-
+    if(settings?.autoStart){ start() }
 
     const pause = () => {
         clearInterval(countRef.current)
