@@ -1,59 +1,58 @@
 
 // Gives you a continuously updating timestamp.
 // Note this triggers a render on every frame.
-import {useRef, useState} from "react";
-
-export interface TimerSettings{
-    offset?: number,
-    autoStart?: boolean;
-}
+import {useEffect, useState} from "react";
 
 export interface TimerResult {
-    timer: number,
-    isActive: boolean,
-    isPaused: boolean,
+    time: number,
+    state: TimerState,
     start: () => void,
     pause: () => void,
-    reset: (settings?: TimerSettings) => void,
+    reset: () => void,
     timeString: () => string;
 }
 
-export const useTimer = (settings?: TimerSettings) => {
-    const [timer, setTimer] = useState(settings?.offset ? settings.offset : 0)
-    const [isActive, setIsActive] = useState(false)
-    const [isPaused, setIsPaused] = useState(false)
+export enum TimerState {
+    PAUSED,
+    ON,
+    OFF
+}
 
-    const n: number | null = 0;
-    const countRef = useRef(n)
+export const useTimer = (): TimerResult => {
+    const [time, setTime] = useState(0)
+    const [state, setState] = useState(TimerState.ON)
 
-    const start = () => {
-        if(isActive && !isPaused) return;
+    useEffect(()=>{
+        let interval: number | undefined = undefined;
 
-        setIsActive(true)
-        setIsPaused(false)
-        if(countRef) countRef.current = setInterval(() => {
-            setTimer((timer) => timer + 10)
-        }, 10)
-    }
+        switch (state) {
+            case TimerState.ON:
+                interval = setInterval(() => {
+                    setTime((time) => time + 10)
+                }, 10)
+                break;
+            case TimerState.PAUSED:
+                clearInterval(interval);
+                break;
+            case TimerState.OFF:
+                clearInterval(interval);
+                setTime(0)
+                break;
+        }
 
-    if(settings?.autoStart){ start() }
+        // Cleanup interval on dismount
+        return () => clearInterval(interval);
+    }, [state])
 
-    const pause = () => {
-        clearInterval(countRef.current)
-        setIsPaused(true)
-    }
-
-    const reset = (settings?: TimerSettings) => {
-        clearInterval(countRef.current)
-        setIsPaused(false)
-        settings?.autoStart ? setIsActive(true) : setIsActive(false)
-        settings?.offset ? setTimer(settings.offset) : setTimer(0);
-    }
+    const start = () => { setState(TimerState.ON) }
+    const pause = () => { setState(TimerState.PAUSED) }
+    const reset = () => { setState(TimerState.OFF) }
 
     const timeString = (): string => {
-        const date = new Date(timer);
-        return [date.getMinutes(), date.getSeconds(), date.getMilliseconds().toString().slice(0,-1)].map(e => e.toString().padStart(2,'0')).join(':')
+        const date = new Date(time);
+        const timeStrings = [date.getMinutes(), date.getSeconds(), date.getMilliseconds().toString().slice(0,-1)].map(e => e.toString().padStart(2,'0'));
+        return timeStrings[0] + ":" + timeStrings[1] + "." + timeStrings[2];
     }
 
-    return { start, pause, reset, timeString }
+    return { time, state, start, pause, reset, timeString }
 }
