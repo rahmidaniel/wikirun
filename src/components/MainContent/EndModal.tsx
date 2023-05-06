@@ -16,11 +16,11 @@ const EndModal = () => {
         <Transition
             show={isOpen}
             enter="transition duration-100 ease-out"
-            enterFrom="transform scale-95 opacity-0"
-            enterTo="transform scale-100 opacity-100"
-            leave="transition duration-75 ease-out"
-            leaveFrom="transform scale-100 opacity-100"
-            leaveTo="transform scale-95 opacity-0"
+            enterFrom="transform opacity-0"
+            enterTo="transform opacity-100"
+            leave="transition duration-200 ease-out"
+            leaveFrom="transform opacity-100"
+            leaveTo="transform opacity-0"
             as={Fragment}
         >
             <Dialog className="modal modal-open" initialFocus={closeButtonRef} onClose={() => setIsOpen(false)}>
