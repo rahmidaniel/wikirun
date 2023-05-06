@@ -1,9 +1,10 @@
-import {useContext, useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import {requestWikiArticle} from "../../utils/wikipediaApi";
 import {ArticleContext} from "../../utils/ArticleContext";
+import {AppState} from "../../utils/AppStateEnum";
 
 const WikiArticle = () => {
-    const {currentArticle, updateArticle} = useContext(ArticleContext);
+    const {currentArticle, updateArticle, appState} = useContext(ArticleContext);
 
     const [html, setHtml] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -25,8 +26,6 @@ const WikiArticle = () => {
                 .then(response =>{
                     setHtml(response.html);
                     setLoadedArticleName(response.title);
-
-                    setIsLoading(false);
                 })
         }
     }, [currentArticle]);
@@ -34,6 +33,7 @@ const WikiArticle = () => {
     // Cleans article and adds listeners
     useEffect( () => {
         if(!wikiRef.current) return;
+        setIsLoading(true);
 
         const handleClick = (event: MouseEvent) => {
             event.preventDefault();
@@ -57,6 +57,9 @@ const WikiArticle = () => {
         scrollToTop();
         setIsLoading(false);
 
+        // Should stay blurred if ended
+        if(appState === AppState.ENDED) setIsLoading(true);
+
         // Removing listeners on dismount
         return () => {
             links?.forEach(link => {
@@ -69,14 +72,7 @@ const WikiArticle = () => {
 
 
     return (
-        <>
-            {isLoading ?
-                (<div className="radial-progress mx-auto my-auto" style={
-                    // @ts-ignore
-                    {"--value":70}}>70%</div>)
-                :
-                (<div ref={wikiRef} className="mw-parser-output" dangerouslySetInnerHTML={{ __html: html }}/>)}
-        </>
+        <div ref={wikiRef} className={`mw-parser-output transition duration-300 ease-in-out ${isLoading && "blur-sm pointer-events-none cursor-none"}`} dangerouslySetInnerHTML={{ __html: html }}/>
     );
 };
 export default WikiArticle;
