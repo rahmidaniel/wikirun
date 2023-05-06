@@ -1,9 +1,9 @@
-import {useWikiSearch} from "../utils/wikipediaApi";
+import {useWikiSearch} from "../../utils/wikipediaApi";
 import {Fragment, useState} from "react";
-import {Article} from "../utils/ArticleContext";
+import {Article} from "../../utils/ArticleContext";
 import {Combobox, Transition} from "@headlessui/react";
 
-const ArticleInput = (prop: {label: string, onSelect: (selected: Article)=>void}) => {
+export const ArticleCombobox = (prop: {label: string, onSelect: (selected: Article)=>void}) => {
     const [query, setQuery] = useState('');
     const [selected, setSelected] = useState<Article>({link: "", title: ""});
     const matches = useWikiSearch(query);
@@ -45,4 +45,4 @@ const ArticleInput = (prop: {label: string, onSelect: (selected: Article)=>void}
     );
 }
 
-export default ArticleInput;
+export default ArticleCombobox;

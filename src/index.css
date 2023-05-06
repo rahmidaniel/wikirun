@@ -23,7 +23,7 @@
   }
 
    /*External links should be non intractable, + new pages */
-  .mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new{
+  .mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new, .mw-parser-output a.selflink{
     @apply link-error dark:link-error pointer-events-none cursor-none;
   }
 

@@ -57,6 +57,10 @@ const ProgressDisplay = () => {
                 <div className="rounded-2xl bg-base-300 m-2 p-2">
                     <h1 className="text-2xl text-green-600 my-auto">{timeString()}</h1>
                 </div>
+
+                <div className="rounded-2xl bg-accent m-2 p-2">
+                    <h1 className="text-2xl text-green-600 my-auto" onClick={()=>prop.reset()}>New Game</h1>
+                </div>
             </div>
         </>
     );

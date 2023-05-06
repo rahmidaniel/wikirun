@@ -22,6 +22,7 @@ export const useTimer = (): TimerResult => {
     const [time, setTime] = useState(0)
     const [state, setState] = useState(TimerState.ON)
 
+    // switched from useref to useeffect
     useEffect(()=>{
         let interval: number | undefined = undefined;
 

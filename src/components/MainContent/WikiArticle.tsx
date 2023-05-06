@@ -1,6 +1,6 @@
 import {useContext, useEffect, useRef, useState} from "react";
-import {requestWikiArticle} from "../utils/wikipediaApi";
-import {ArticleContext} from "../utils/ArticleContext";
+import {requestWikiArticle} from "../../utils/wikipediaApi";
+import {ArticleContext} from "../../utils/ArticleContext";
 
 const WikiArticle = () => {
     const {currentArticle, updateArticle} = useContext(ArticleContext);
@@ -71,7 +71,7 @@ const WikiArticle = () => {
     return (
         <>
             {isLoading ?
-                (<div className="radial-progress" style={
+                (<div className="radial-progress mx-auto my-auto" style={
                     // @ts-ignore
                     {"--value":70}}>70%</div>)
                 :

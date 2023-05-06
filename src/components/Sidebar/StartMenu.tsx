@@ -1,10 +1,10 @@
-import ArticleInput from "./ArticleInput";
+import ArticleCombobox from "./ArticleCombobox";
 import {useContext, useEffect, useState} from "react";
-import {Article, ArticleContext} from "../utils/ArticleContext";
+import {Article, ArticleContext} from "../../utils/ArticleContext";
 
 // inspired by https://reacthustle.com/blog/how-to-implement-a-react-autocomplete-input-using-daisyui
 
-const SearchBar = () => {
+const StartMenu = () => {
     const [startArticle, setStartArticle] = useState<Article | null>(null);
     const [endArticle, setEndArticle] = useState<Article | null>(null);
     const [isReady, setIsReady] = useState(false);
@@ -22,8 +22,8 @@ const SearchBar = () => {
 
     return(
         <div className="flex-col mx-auto">
-            <ArticleInput label={"Starting Article"} onSelect={setStartArticle}/>
-            <ArticleInput label={"Ending Article"} onSelect={setEndArticle}/>
+            <ArticleCombobox label={"Starting Article"} onSelect={setStartArticle}/>
+            <ArticleCombobox label={"Ending Article"} onSelect={setEndArticle}/>
             <button
                 onClick={handleStart}
                 className={`btn btn-success w-1/2 mt-4 rounded-2xl ${!isReady ? 'btn-disabled' : ''}`}>
@@ -36,4 +36,4 @@ const SearchBar = () => {
     )
 }
 
-export default SearchBar;
+export default StartMenu;
