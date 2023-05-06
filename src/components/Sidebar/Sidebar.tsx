@@ -20,7 +20,7 @@ const Sidebar = () => {
         <div className="my-sidebar py-16" >
             <h1>Wikipedia Speedrun</h1>
             <p>Test your knowledge of the world!</p>
-            { prop.appState === AppState.MENU ? <StartMenu/> : progressDisplay }
+            {components[prop.appState]}
         </div>
     );
 };
