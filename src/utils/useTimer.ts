@@ -1,6 +1,3 @@
-
-// Gives you a continuously updating timestamp.
-// Note this triggers a render on every frame.
 import {useEffect, useState} from "react";
 
 export interface TimerResult {

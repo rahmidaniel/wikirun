@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
-import { themeIsDark } from '../../utils/themeUtils'
-import { themeChange } from 'theme-change'
+import {themeIsDark} from '../../utils/themeUtils'
+import {themeChange} from 'theme-change'
 import theme from "tailwindcss/defaultTheme";
 import {MoonIcon, SunIcon} from "@heroicons/react/20/solid";
+
 const Navbar = () => {
     const [isDark, setDark] = useState(themeIsDark);
 
