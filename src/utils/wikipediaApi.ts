@@ -12,7 +12,7 @@ export const requestWikiArticle = async (pageName: string): Promise<articleResul
             params: {
                 action: "parse",
                 format: "json",
-                page: decodeURIComponent(pageName), // fixes un
+                page: decodeURIComponent(pageName),
                 disableeditsection: true,
                 disabletoc: true,
                 redirects: true,
