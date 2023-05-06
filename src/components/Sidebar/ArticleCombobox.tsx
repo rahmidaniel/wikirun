@@ -3,7 +3,7 @@ import {Fragment, useState} from "react";
 import {Article} from "../../utils/ArticleContext";
 import {Combobox, Transition} from "@headlessui/react";
 
-export const ArticleCombobox = (prop: {label: string, onSelect: (selected: Article)=>void}) => {
+const ArticleCombobox = (prop: {label: string, onSelect: (selected: Article)=>void}) => {
     const [query, setQuery] = useState('');
     const [selected, setSelected] = useState<Article>({link: "", title: ""});
     const matches = useWikiSearch(query);
