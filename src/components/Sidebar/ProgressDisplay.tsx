@@ -36,7 +36,7 @@ const ProgressDisplay = () => {
             <h4 className="flex mx-2 flex-wrap">{prop.startArticle?.title + "->" + prop.endArticle?.title}</h4>
             <div className="flex flex-col">
                 <div className="overflow-y-auto h-4/6 max-h-96 mx-2 w-full overflow-x-visible" ref={tableRef} style={{ scrollBehavior: "smooth" }}>
-                    <table className="table table-zebra table-compact">
+                    <table className="table table-zebra table-compact border border-base-100 p-2">
                         <thead>
                         <tr>
                             <th className="pl-2">Title</th>
@@ -59,14 +59,14 @@ const ProgressDisplay = () => {
                 </div>
 
                 {/* New game button */}
-                <button
+                {prop.appState === AppState.ENDED && <button
                     onClick={()=>prop.reset()}
-                    className={`btn btn-success w-1/2 mt-4 mx-auto rounded-2xl ${prop.appState !== AppState.ENDED && "hidden"}`}>
+                    className="btn btn-success w-1/2 mt-4 mx-auto rounded-2xl">
                     New Game
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 p-0.5">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                     </svg>
-                </button>
+                </button>}
             </div>
         </>
     );
