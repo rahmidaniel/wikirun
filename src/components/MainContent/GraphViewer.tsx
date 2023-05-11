@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import cytoscape from 'cytoscape';
 import dagre from 'cytoscape-dagre';
-import {Graph, GraphLink, GraphNode} from "../../utils/GraphTypes";
+import {Graph, GraphLink, GraphNode} from "../../Types/GraphTypes";
 
 cytoscape.use(dagre);
 
 const defaults = {
     name: 'dagre',
-    rankDir: 'TB', // 'TB' for top to bottom flow, 'LR' for left to right,
+    rankDir: 'TD', // 'TB' for top to bottom flow, 'LR' for left to right,
     ranker: 'tight-tree', // Type of algorithm to assign a rank to each node in the input graph. Possible values: 'network-simplex', 'tight-tree' or 'longest-path'
-    fit: true, // whether to fit to viewport
+    fit: true,
 };
 
 interface CytoscapeGraphProps {
@@ -74,6 +74,13 @@ const CytoscapeGraph: React.FC<CytoscapeGraphProps> = ({ graph, layoutOptions, s
                         width: 0.5,
                     },
                 },
+                {
+                    // Limit to elements that have data
+                    selector: 'size',
+                    style: {
+                        height: (ele) => ele.data('size')
+                    }
+                }
             ],
         });
 

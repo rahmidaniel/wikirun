@@ -1,10 +1,6 @@
 import {createContext} from "react";
-import {AppState} from "./AppStateEnum";
-
-export interface Article{
-    title: string,
-    link: string,
-}
+import {AppState} from "../Types/AppStateEnum";
+import {Article} from "../Types/Article";
 
 export interface ArticleContextProp {
     appState: AppState,

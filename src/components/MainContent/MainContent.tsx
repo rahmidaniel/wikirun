@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {ArticleContext} from "../../utils/ArticleContext";
-import {AppState} from "../../utils/AppStateEnum";
+import {AppState} from "../../Types/AppStateEnum";
 import WikiArticle from "./WikiArticle";
 import EndModal from "./EndModal";
 import Algo from "./Algo";

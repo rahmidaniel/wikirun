@@ -1,124 +1,9 @@
 import React, {useState} from "react";
-import axios from "axios";
-import {Article} from "../../utils/ArticleContext";
 import ArticleCombobox from "../Sidebar/ArticleCombobox";
 import GraphViewer from "./GraphViewer";
-import {Graph, GraphNode} from "../../utils/GraphTypes";
-
-interface Link {
-    ns: number // namespace
-    title: string
-}
-
-type Page = {
-    pageid: number
-    links: Link[]
-} & Link;
-
-type RePage = {
-    pageid: number
-    linkshere: Link[]
-} & Link;
-
-type QueryResult = {
-    continue?: {
-        plcontinue: string,
-        continue: string
-    }
-    query: {
-        pages: Page[]
-    }
-}
-
-type ReQueryResult = {
-    continue?: {
-        lhcontinue: string,
-        continue: string
-    }
-    query: {
-        pages: RePage[]
-    }
-}
-
-export const requestLinks = async (pageName: string): Promise<string[]> => {
-    let matches: string[] = [];
-    let moreLinks = true;
-
-    let continueValue: string | null = null;
-
-    while(moreLinks){
-        await axios.get('https://en.wikipedia.org/w/api.php?', {
-            params: {
-                action: "query",
-                prop: "links",
-                format: "json",
-                formatversion: "2",
-                origin: "*",
-                titles: decodeURIComponent(pageName),
-                pllimit: "10",
-                plnamespace: "0",
-                //...(continueValue ? {plcontinue: continueValue} : {}) // continue call if needed
-            }
-        }).then((response) => {
-            const queryResult = (response.data as QueryResult);
-            //console.log(queryResult)
-
-            matches.push(...queryResult.query.pages[0].links.map(page=>page.title));
-
-            moreLinks = false; // LIMITER ADDED
-            if(queryResult.continue !== undefined){
-                continueValue = queryResult.continue.plcontinue;
-            }
-            else {
-                moreLinks = false;
-            }
-
-        }).catch((error) => {
-            if(!axios.isCancel(error)) console.log(`Error in query: ${pageName}`, error);
-            moreLinks = false;
-        });
-    }
-
-    return matches;
-}
-export const requestReverseLinks = async (pageName: string): Promise<string[]> => {
-    let matches: string[] = [];
-    let moreLinks = true;
-
-    let continueValue: string | null = null;
-
-    while(moreLinks){
-        await axios.get('https://en.wikipedia.org/w/api.php?', {
-            params: {
-                action: "query",
-                prop: "linkshere",
-                format: "json",
-                formatversion: "2",
-                origin: "*",
-                titles: decodeURIComponent(pageName),
-                lhlimit: "max",
-                lhnamespace: "0",
-                ...(continueValue ? {lhcontinue: continueValue} : {}) // continue call if needed
-            }
-        }).then((response) => {
-            const queryResult = (response.data as ReQueryResult);
-
-            matches.push(...queryResult.query.pages[0].linkshere.map(page=>page.title));
-
-            if(queryResult.continue !== undefined){
-                continueValue = queryResult.continue.lhcontinue;
-            }
-            else {
-                moreLinks = false;
-            }
-
-        }).catch((error) => {
-            if(!axios.isCancel(error)) console.log(`Error in query: ${pageName}`, error);
-        });
-    }
-
-    return matches;
-}
+import {Graph, GraphNode} from "../../Types/GraphTypes";
+import {Article} from "../../Types/Article";
+import {fetchLinks} from "../../api/links/fetchLinks";
 
 type SearchAlgorithm = {
     startNode: string,
@@ -130,7 +15,7 @@ type SearchAlgorithm = {
 const bfs_run = async function(this: SearchAlgorithm) {
     const {startNode, endNode, loadEdges} = this;
 
-    // Keep track of the nodes visited during the search
+    // Keep track of the nodes visited during the searchHook
     const visited = new Set<string>();
 
     // Create a queue to store the nodes to be explored
@@ -170,10 +55,9 @@ const bfs_run = async function(this: SearchAlgorithm) {
     return null;
 }
 
-const bi_bfs_run = async function(this: SearchAlgorithm){
-    const {startNode, endNode, loadEdges} = this;
-    const startGraphNode: GraphNode = {title: startNode, depth: 0};
-    const endGraphNode: GraphNode = {title: endNode, depth: 0};
+const bi_bfs_run = async function(startTitle: string, targetTitle: string, maxDepth: number, stopSignal: boolean, updateGraph: (value: (((prevState: Graph) => Graph) | Graph)) => void){
+    const startGraphNode: GraphNode = {title: startTitle, depth: 0};
+    const endGraphNode: GraphNode = {title: targetTitle, depth: 0};
 
     const graph: Graph = { nodes: [], links: [] };
 
@@ -188,52 +72,66 @@ const bi_bfs_run = async function(this: SearchAlgorithm){
     const endQueue: [GraphNode, GraphNode[]][] = [[endGraphNode, [endGraphNode]]];
 
     // Create an object to keep track of nodes visited from both ends
-    const visited: {[title: string]: [GraphNode[], GraphNode[]]} = {[startNode]: [[startGraphNode], []], [endNode]: [[], [endGraphNode]]};
+    const visited: {[title: string]: [GraphNode[], GraphNode[]]} = {[startTitle]: [[startGraphNode], []], [targetTitle]: [[], [endGraphNode]]};
 
     // Loop until there are no more nodes to explore
-    while (startQueue.length > 0 || endQueue.length > 0) {
+    while ((startQueue.length > 0 || endQueue.length > 0) && !stopSignal) {
         // Explore from the start node
-        if (startQueue.length > 0) {
+        if (startQueue.length > 0 && startQueue.length <= endQueue.length) {
             const [current, path] = startQueue.shift()!;
             const depth = current.depth;
+            graph.nodes.push(current);
+
+            if (depth >= maxDepth) continue;
+
             // If we reach the end node, return the path
-            if (current.title === endNode || endVisited.has(current.title)) {
-                return [...path, ...visited[current.title][1].reverse().slice(1)];
+            if (current.title === targetTitle || endVisited.has(current.title)) {
+                //return [...path, ...visited[current.title][1].reverse().slice(1)];
+                return []; // empty string array for now
             }
             // Otherwise, mark the node as visited and explore its neighbors
             if (!startVisited.has(current.title)) {
                 startVisited.add(current.title);
-                const neighbors = await requestLinks(current.title);
+                const neighbors = await fetchLinks(current.title);
                 for (const neighbor of neighbors) {
                     if (!startVisited.has(neighbor)) {
                         startVisited.add(neighbor);
-                        startQueue.push([{title: neighbor, depth: depth}, [...path, neighbor]]);
-                        visited[neighbor] = [[...path, neighbor], visited[neighbor]?.[1] || []];
+                        const newNode = {title: neighbor, depth: depth + 1};
+                        startQueue.push([newNode, [...path, newNode]]);
+                        visited[neighbor] = [[...path, newNode], visited[neighbor]?.[1] || []];
+                        graph.nodes.push(newNode);
+                        graph.links.push({ source: current, target: newNode });
                     }
                 }
             }
-        }
-
-        // Explore from the end node
-        if (endQueue.length > 0) {
+        } else if(endQueue.length > 0) {
             const [current, path] = endQueue.shift()!;
+            const depth = current.depth;
+            graph.nodes.push(current);
+
+            if (depth >= maxDepth) continue;
+
             // If we reach the start node, return the path
-            if (current === startNode || startVisited.has(current)) {
-                return [...visited[current][0].slice(0, -1).reverse(), ...path];
+            if (current.title === startTitle || startVisited.has(current.title)) {
+                //return [...visited[current.title][0].slice(0, -1).reverse(), ...path];
+                return [];
             }
             // Otherwise, mark the node as visited and explore its neighbors
-            if (!endVisited.has(current)) {
-                endVisited.add(current);
-                const neighbors = await requestReverseLinks(current);
+            if (!endVisited.has(current.title)) {
+                endVisited.add(current.title);
+                const neighbors = await fetchLinks(current.title, true);
                 for (const neighbor of neighbors) {
                     if (!endVisited.has(neighbor)) {
-                        endQueue.push([neighbor, [...path, neighbor]]);
-                        visited[neighbor] = [visited[neighbor]?.[0] || [], [...path, neighbor]];
-
+                        const newNode = {title: neighbor, depth: depth + 1};
+                        endQueue.push([newNode, [...path, newNode]]);
+                        visited[neighbor] = [visited[neighbor]?.[0] || [], [...path, newNode]];
+                        graph.nodes.push(newNode);
+                        graph.links.push({ source: current, target: newNode });
                     }
                 }
             }
         }
+        updateGraph(graph); // Update the graph to the newest version
     }
 
     // If we didn't find a path, return null
@@ -257,7 +155,7 @@ async function buildGraph(startTitle: string, targetTitle: string, maxDepth: num
         if (depth >= maxDepth) continue;
 
         // Request links from current node
-        const links = await requestLinks(currentNode.title);
+        const links = await fetchLinks(currentNode.title);
 
         // Add unvisited links to the queue
         for (const link of links) {
@@ -273,18 +171,6 @@ async function buildGraph(startTitle: string, targetTitle: string, maxDepth: num
         }
         updateGraph(graph);
     }
-
-    // // Add target node if not already in the graph
-    // if (!visited.has(targetTitle)) {
-    //     graph.nodes.push({title: targetTitle});
-    // }
-}
-
-const bfs: SearchAlgorithm = {
-    startNode: "Paper",
-    endNode: "Flax",
-    loadEdges: requestLinks,
-    run: bi_bfs_run
 }
 
 const Algo = () => {
@@ -292,14 +178,11 @@ const Algo = () => {
 
     const [stopSignal, setStopSignal] = useState(true);
 
-    const [g, setG] = useState<Graph>({links: [], nodes: []})
+    const [graph, setGraph] = useState<Graph>({links: [], nodes: []})
     const handleSelect = (selected: Article) => {
-        requestLinks(selected.title).then((result)=> setMatches(result));
-
-        // bfs.run().then(result=> console.log(result));
+        fetchLinks(selected.title).then((result)=> setMatches(result));
     }
-
-    buildGraph("Flax", "Egypt", 2, stopSignal, setG).then(console.log);
+    bi_bfs_run("Flax", "Egypt", 2, stopSignal, setGraph);
 
     return(
         <div className="flex flex-col justify-evenly w-full">
@@ -309,7 +192,7 @@ const Algo = () => {
                 <button className="btn btn-success" onClick={()=>setStopSignal(false)}>GO</button>
             </div>
             <div className="h-4/5 w-11/12 mx-auto border-black border-2" >
-                <GraphViewer  graph={g}/>
+                <GraphViewer  graph={graph}/>
             </div>
         </div>
     )

@@ -1,9 +1,10 @@
 import Sidebar from "./Sidebar/Sidebar";
 import Navbar from "./Navbar/Navbar";
 import React, {useState} from "react";
-import {Article, ArticleContext} from "../utils/ArticleContext";
-import {AppState} from "../utils/AppStateEnum";
+import {ArticleContext} from "../utils/ArticleContext";
+import {AppState} from "../Types/AppStateEnum";
 import MainContent from "./MainContent/MainContent";
+import {Article} from "../Types/Article";
 
 function App() {
     // Setting up the game context for provider

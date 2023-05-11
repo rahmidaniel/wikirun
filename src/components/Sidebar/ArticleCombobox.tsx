@@ -1,7 +1,7 @@
-import {useWikiSearch} from "../../utils/wikipediaApi";
+import {useWikiSearch} from "../../api/searchHook/useWikiSearch";
 import {Fragment, useState} from "react";
-import {Article} from "../../utils/ArticleContext";
 import {Combobox, Transition} from "@headlessui/react";
+import {Article} from "../../Types/Article";
 
 const ArticleCombobox = (prop: {label: string, onSelect: (selected: Article)=>void}) => {
     const [query, setQuery] = useState('');

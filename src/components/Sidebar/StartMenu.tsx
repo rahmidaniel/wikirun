@@ -1,6 +1,7 @@
 import ArticleCombobox from "./ArticleCombobox";
 import {useContext, useEffect, useState} from "react";
-import {Article, ArticleContext} from "../../utils/ArticleContext";
+import {ArticleContext} from "../../utils/ArticleContext";
+import {Article} from "../../Types/Article";
 
 // inspired by https://reacthustle.com/blog/how-to-implement-a-react-autocomplete-input-using-daisyui
 

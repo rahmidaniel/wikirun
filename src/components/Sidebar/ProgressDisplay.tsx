@@ -1,7 +1,8 @@
 import {useTimer} from "../../utils/useTimer";
 import {useContext, useMemo, useRef, useState} from "react";
-import {Article, ArticleContext} from "../../utils/ArticleContext";
-import {AppState} from "../../utils/AppStateEnum";
+import {ArticleContext} from "../../utils/ArticleContext";
+import {AppState} from "../../Types/AppStateEnum";
+import {Article} from "../../Types/Article";
 
 type TimedArticle = {
     time: string

@@ -2,7 +2,7 @@ import ProgressDisplay from "./ProgressDisplay";
 import StartMenu from "./StartMenu";
 import {useContext} from "react";
 import {ArticleContext} from "../../utils/ArticleContext";
-import {AppState} from "../../utils/AppStateEnum";
+import {AppState} from "../../Types/AppStateEnum";
 
 const Sidebar = () => {
     const prop = useContext(ArticleContext);

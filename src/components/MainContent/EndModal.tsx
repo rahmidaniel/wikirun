@@ -1,7 +1,7 @@
 import {Dialog, Transition} from "@headlessui/react";
 import React, {Fragment, useContext, useEffect, useRef, useState} from "react";
 import {ArticleContext} from "../../utils/ArticleContext";
-import {AppState} from "../../utils/AppStateEnum";
+import {AppState} from "../../Types/AppStateEnum";
 
 const EndModal = () => {
     const [isOpen, setIsOpen] = useState(false);

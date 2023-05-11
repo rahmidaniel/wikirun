@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
-import {requestWikiArticle} from "../../utils/wikipediaApi";
 import {ArticleContext} from "../../utils/ArticleContext";
-import {AppState} from "../../utils/AppStateEnum";
+import {AppState} from "../../Types/AppStateEnum";
+import {fetchArticle} from "../../api/article/fetchArticle";
 
 const WikiArticle = () => {
     const {currentArticle, updateArticle, appState} = useContext(ArticleContext);
@@ -22,7 +22,7 @@ const WikiArticle = () => {
     useEffect( ()=>{
         if(currentArticle && currentArticle.title !== loadedArticleName){
             setIsLoading(true);
-            requestWikiArticle(currentArticle.link)
+            fetchArticle(currentArticle.link)
                 .then(response =>{
                     setHtml(response.html);
                     setLoadedArticleName(response.title);

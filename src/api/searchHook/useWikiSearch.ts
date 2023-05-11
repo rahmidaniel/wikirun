@@ -1,27 +1,6 @@
-// Wikipedia API call
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Article} from "./ArticleContext";
-
-export type articleResult = {
-    html: string
-} & Article;
-
-export const requestWikiArticle = async (pageName: string): Promise<articleResult> => {
-    const response = await axios.get('https://en.wikipedia.org/w/api.php?', {
-            params: {
-                action: "parse",
-                format: "json",
-                page: decodeURIComponent(pageName),
-                disableeditsection: true,
-                disabletoc: true,
-                redirects: true,
-                origin: "*"
-            }
-        });
-    //console.log(response.data);
-    return {title: response.data.parse.title, link: pageName , html: response.data.parse.text['*']};
-}
+import {Article} from "../../Types/Article";
 
 export const useWikiSearch = (query: string): Article[] => {
     const [matches, setMatches] = useState<Article[]>([]);
