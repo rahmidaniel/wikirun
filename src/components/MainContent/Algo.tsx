@@ -38,17 +38,15 @@ const bfs_run = async function(this: SearchAlgorithm) {
         visited.add(current);
 
         // Get the links from the current article
-        await loadEdges(current).then(links => {
-                // Enqueue the neighboring nodes to explore
-                for (const neighbor of links) {
-                    // Only add the neighbor if we haven't visited it yet
-                    if (!visited.has(neighbor)) {
-                        visited.add(neighbor); // NEWLINE
-                        queue.push([...path, neighbor]);
-                    }
-                }
+        const links = await loadEdges(current);
+        // Enqueue the neighboring nodes to explore
+        for (const neighbor of links) {
+            // Only add the neighbor if we haven't visited it yet
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor); // NEWLINE
+                queue.push([...path, neighbor]);
             }
-        );
+        }
     }
 
     // Return null if we couldn't find a path
@@ -65,17 +63,21 @@ const bi_bfs_run = async function(startTitle: string, targetTitle: string, maxDe
     const startVisited = new Set<string>();
     // Create a queue to keep track of the current path from the start node
     const startQueue: [GraphNode, GraphNode[]][] = [[startGraphNode, [startGraphNode]]];
+    let startDepth = 0;
 
     // Create a set to keep track of visited nodes from the end node
     const endVisited = new Set<string>();
     // Create a queue to keep track of the current path from the end node
     const endQueue: [GraphNode, GraphNode[]][] = [[endGraphNode, [endGraphNode]]];
+    let endDepth = 0;
 
     // Create an object to keep track of nodes visited from both ends
     const visited: {[title: string]: [GraphNode[], GraphNode[]]} = {[startTitle]: [[startGraphNode], []], [targetTitle]: [[], [endGraphNode]]};
 
+    const interval = setInterval(() => updateGraph(graph), 2000);
+
     // Loop until there are no more nodes to explore
-    while ((startQueue.length > 0 || endQueue.length > 0) && !stopSignal) {
+    while ((startQueue.length > 0 || endQueue.length > 0) && !stopSignal && (endDepth <= maxDepth && startDepth <= maxDepth)) {
         // Explore from the start node
         if (startQueue.length > 0 && startQueue.length <= endQueue.length) {
             const [current, path] = startQueue.shift()!;
@@ -87,7 +89,7 @@ const bi_bfs_run = async function(startTitle: string, targetTitle: string, maxDe
             // If we reach the end node, return the path
             if (current.title === targetTitle || endVisited.has(current.title)) {
                 //return [...path, ...visited[current.title][1].reverse().slice(1)];
-                return []; // empty string array for now
+                break;
             }
             // Otherwise, mark the node as visited and explore its neighbors
             if (!startVisited.has(current.title)) {
@@ -114,7 +116,8 @@ const bi_bfs_run = async function(startTitle: string, targetTitle: string, maxDe
             // If we reach the start node, return the path
             if (current.title === startTitle || startVisited.has(current.title)) {
                 //return [...visited[current.title][0].slice(0, -1).reverse(), ...path];
-                return [];
+                //return [];
+                break;
             }
             // Otherwise, mark the node as visited and explore its neighbors
             if (!endVisited.has(current.title)) {
@@ -131,8 +134,10 @@ const bi_bfs_run = async function(startTitle: string, targetTitle: string, maxDe
                 }
             }
         }
-        updateGraph(graph); // Update the graph to the newest version
     }
+
+    // Quiting graph re-rendering
+    clearInterval(interval);
 
     // If we didn't find a path, return null
     return null;
