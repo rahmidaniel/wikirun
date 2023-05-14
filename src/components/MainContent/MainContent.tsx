@@ -3,19 +3,19 @@ import {ArticleContext} from "../../utils/ArticleContext";
 import {AppState} from "../../Types/AppStateEnum";
 import WikiArticle from "./WikiArticle";
 import EndModal from "./EndModal";
-import Algo from "./Algo";
+import SigmaViewer from "./GraphTraversal";
 
 const MainContent = () => {
     const prop = useContext(ArticleContext);
 
     const wiki = <WikiArticle/>;
-    const algoTest= <Algo/>;
+    const algoTest= <SigmaViewer/>;
 
     // Dictionary like storage for state specific JSX components
     const components = {
         [AppState.MENU]: algoTest,
         [AppState.STARTED]: wiki,
-        [AppState.ENDED]:  <>{wiki}<EndModal/></>
+        [AppState.ENDED]:  <>{algoTest}<EndModal/></>
     };
 
     return(components[prop.appState]);

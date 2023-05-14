@@ -1,6 +1,7 @@
 import {createContext} from "react";
 import {AppState} from "../Types/AppStateEnum";
 import {Article} from "../Types/Article";
+import Graph from "graphology";
 
 export interface ArticleContextProp {
     appState: AppState,
@@ -11,6 +12,8 @@ export interface ArticleContextProp {
     endArticle: Article | null,
     startGame: (start: Article, end: Article)=> void,
     reset: ()=> void,
+
+    graph: Graph
 }
 
 export const ArticleContext = createContext<ArticleContextProp>({
@@ -19,5 +22,6 @@ export const ArticleContext = createContext<ArticleContextProp>({
     articleList: [],
     updateArticle: () => {},
     startGame(start: Article, end: Article): void {},
-    reset(): void{}
+    reset(): void{},
+    graph: new Graph()
 });
