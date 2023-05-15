@@ -13,15 +13,12 @@ const ArticleCombobox = (prop: {label: string, onSelect: (selected: Article)=>vo
             {/*needed 2 divs, dropdown messed with the width*/}
             <div className="dropdown">
 
-                <Combobox value={selected} onChange={(value)=>
-                        { setSelected(value); if(value.title !== "") prop.onSelect(value); }
-                    }>
-                        <Combobox.Input
-                            className={`input input-bordered w-full 
-                                ${selected.title && selected.title !== "" ? "input-success": "input-warning"}`
-                            }
-                            onChange={(event) => setQuery(event.target.value)}
-                            displayValue={(article: Article) => article.title}/>
+                <Combobox value={selected} onChange={(value)=> { setSelected(value); if(value.title !== "") prop.onSelect(value); }}>
+                    <Combobox.Label>{prop.label}</Combobox.Label>
+                    <Combobox.Input
+                        className={`input input-bordered w-full ${selected.title && selected.title !== "" ? "input-success": "input-warning"}`}
+                        onChange={(event) => setQuery(event.target.value)}
+                        displayValue={(article: Article) => article.title}/>
                     <Transition
                         as={Fragment}
                         leave="transition ease-in duration-100"
