@@ -17,7 +17,7 @@ function App() {
     const [endArticle, setEndArticle] = useState<Article | null>(null);
 
     const [appState, setAppState] = useState<AppState>(AppState.MENU);
-    const [graph, setGraph] = useState<Graph>(new Graph());
+    const [graph] = useState<Graph>(new Graph());
 
     // Changes state to AppState.ENDED if condition is met
     const updateArticle = (newArticle: Article)=>{
