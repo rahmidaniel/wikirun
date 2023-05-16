@@ -9,6 +9,8 @@ export function handleDragNDrop(renderer: Sigma<AbstractGraph>, graph: Graph, la
     let draggedNode: string | null = null;
     let isDragging = false;
 
+    let layoutStopped = false;
+
     // On mouse down on a node
     //  - we enable the drag mode
     //  - save in the dragged node in the state
@@ -19,8 +21,12 @@ export function handleDragNDrop(renderer: Sigma<AbstractGraph>, graph: Graph, la
         draggedNode = e.node;
         graph.setNodeAttribute(draggedNode, "highlighted", true);
 
-        // Stop simulation
-        layout.stop();
+        // // Stop simulation
+        if(layout.isRunning()) {
+            layout.stop();
+            layoutStopped = true;
+        }
+
     });
 
     // On mouse move, if the drag mode is enabled, we change the position of the draggedNode
@@ -43,12 +49,13 @@ export function handleDragNDrop(renderer: Sigma<AbstractGraph>, graph: Graph, la
     renderer.getMouseCaptor().on("mouseup", () => {
         if (draggedNode) {
             graph.removeNodeAttribute(draggedNode, "highlighted");
-            loadNeighbors(draggedNode, graph)
+            // loadNeighbors(draggedNode, graph)
         }
         isDragging = false;
         draggedNode = null;
 
-        layout.start();
+        // Only restart if this function stopped it
+        if(layoutStopped && !layout.isRunning()) layout.start();
     });
 
     // Disable the autoscale at the first down interaction

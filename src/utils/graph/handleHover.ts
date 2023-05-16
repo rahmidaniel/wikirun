@@ -35,10 +35,6 @@ export const handleHover = (renderer: Sigma<AbstractGraph>, graph: Graph) => {
         setHoveredNode(undefined);
     });
 
-    renderer.on('kill', ()=>{
-        renderer.removeAllListeners()
-    })
-
     // Render nodes accordingly to the internal state:
     // 1. If a node is selected, it is highlighted
     // 2. If there is query, all non-matching nodes are greyed

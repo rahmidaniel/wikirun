@@ -3,7 +3,7 @@ import {ArticleContext} from "../../utils/ArticleContext";
 import {AppState} from "../../Types/AppStateEnum";
 import WikiArticle from "./WikiArticle";
 import EndModal from "./EndModal";
-import SigmaViewer from "./GraphTraversal";
+import SigmaViewer from "./Graph/GraphViewer";
 
 const MainContent = () => {
     const prop = useContext(ArticleContext);
