@@ -5,6 +5,7 @@ import Graph from "graphology";
 
 export interface ArticleContextProp {
     appState: AppState,
+    algoDone: boolean,
     currentArticle: Article | null,
     articleList: Article[],
     updateArticle: (newArticle: Article) => void,
@@ -18,6 +19,7 @@ export interface ArticleContextProp {
 
 export const ArticleContext = createContext<ArticleContextProp>({
     appState: AppState.MENU,
+    algoDone: false,
     endArticle: null, startArticle: null, currentArticle: null,
     articleList: [],
     updateArticle: () => {},

@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {ForceAtlas2Settings} from "graphology-layout-forceatlas2";
 import FA2LayoutSupervisor from "graphology-layout-forceatlas2/worker";
+import {ArticleContext} from "../../../utils/ArticleContext";
 
 interface LayoutControllerParams {
     layout: FA2LayoutSupervisor | null;
@@ -12,11 +13,12 @@ interface LayoutControllerParams {
 
 const LayoutController = (prop: LayoutControllerParams) => {
     const {layout, fa2Settings, onSettingsChange, simRunning, setSimRunning} = prop;
+    const {algoDone} = useContext(ArticleContext);
 
-    if(!layout){
+    if(!layout || !algoDone){
         return (
             <div className="flex w-full flex-col mt-2 w-full h-40 rounded-box bg-base-200">
-                <label className="btn btn-ghost animate-pulse m-auto">Waiting for graph...</label>
+                <label className="btn btn-ghost animate-pulse m-auto">Waiting for algorithm...</label>
             </div>
         )
     }
@@ -69,13 +71,6 @@ const LayoutController = (prop: LayoutControllerParams) => {
                                     Repulsion distribution
                                 </span>
                     <input type="checkbox" name="outboundAttractionDistribution" checked={fa2Settings.outboundAttractionDistribution} onChange={handleFA2ParamChange} className="checkbox checkbox-primary" />
-                </label>
-                {/*// TODO: hide this with a transition*/}
-                <label className="label transition-opacity duration-500 ease-in-out delay-400">
-                    <span className="label-text" data-tip="Amount of space the graph can take up. Default 1.">
-                        Scaling Ratio
-                    </span>
-                    <input type="number" name="scalingRatio" value={fa2Settings.scalingRatio} onChange={handleFA2ParamChange} className="input input-sm"/>
                 </label>
                 <label className="label transition-opacity duration-500 ease-in-out delay-500">
                     <span className="label-text" data-tip="Strength of the layout’s gravity. Default 5">

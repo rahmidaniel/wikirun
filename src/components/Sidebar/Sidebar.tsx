@@ -19,7 +19,6 @@ const Sidebar = () => {
     return(
         <div className="my-sidebar py-16" >
             <h1>Wikipedia Speedrun</h1>
-            <p>Test your knowledge of the world!</p>
             {components[prop.appState]}
         </div>
     );

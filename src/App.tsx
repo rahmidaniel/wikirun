@@ -5,8 +5,10 @@ import {ArticleContext} from "./utils/ArticleContext";
 import {AppState} from "./Types/AppStateEnum";
 import MainContent from "./components/MainContent/MainContent";
 import {Article} from "./Types/Article";
-import Graph from "graphology";
-import {baseColor, baseSize} from "./utils/graph/graphDefaults";
+import Graph, {MultiGraph} from "graphology";
+import {baseColor, baseSize, calculateChildNodeSize} from "./utils/graph/graphDefaults";
+import {bidirectionalBFS} from "./utils/graph/algorithms/bidirectionalBFS";
+import chroma from "chroma-js";
 
 function App() {
     // Setting up the game context for provider
@@ -17,7 +19,8 @@ function App() {
     const [endArticle, setEndArticle] = useState<Article | null>(null);
 
     const [appState, setAppState] = useState<AppState>(AppState.MENU);
-    const [graph] = useState<Graph>(new Graph());
+    const [graph] = useState<Graph>(new Graph({multi: true, allowSelfLoops: true}));
+    const [algoDone, setAlgoDone] = useState(false);
 
     // Changes state to AppState.ENDED if condition is met
     const updateArticle = (newArticle: Article)=>{
@@ -25,17 +28,46 @@ function App() {
         if(newArticle?.link === endArticle?.link && appState != AppState.ENDED) setAppState(AppState.ENDED);
 
         setCurrentArticle(newArticle);
-        //console.log("updateArticle called with: ",newArticle);
+        // console.log("updateArticle called with: ",newArticle);
         setArticleList([...articleList, newArticle]);
 
-        // TODO: This should be handled with an event
-        graph.addNode(newArticle.title,{reverse: false, depth: articleList.length-1, loaded: false, label: newArticle.title, size: baseSize, color: baseColor, x: 2000 * articleList.length, y: 0})
+        graph.mergeNode(newArticle.title,{reverse: false, depth: articleList.length-1, loaded: false, label: newArticle.title, size: baseSize, color: baseColor, x: 2000 * articleList.length, y: 0})
         if(currentArticle)
-            graph.addEdge(currentArticle.title, newArticle.title, {
+            graph.mergeEdge(currentArticle.title, newArticle.title, {
                 color: baseColor,
                 size: 5,
                 zIndex: 50
             });
+    }
+
+    const handleAlgo = async (source: string, target: string) => {
+        const path = await bidirectionalBFS(graph, source, target);
+
+        if (path) {
+            graph.mergeNode(path[0], {
+                reverse: false,
+                depth: 0,
+                loaded: false,
+                label: path[0],
+                size: baseSize,
+                color: chroma("brown").hex("rgba"),
+                x: 0,
+                y: 0
+            })
+            for (let i = 1; i < path.length; i++) {
+                graph.mergeNode(path[i], {
+                    reverse: false,
+                    depth: i,
+                    loaded: false,
+                    label: path[i],
+                    size: baseSize,
+                    color: baseColor,
+                    x: 1000 * i,
+                    y: 0
+                })
+                graph.mergeEdge(path[i - 1], path[i], {color: chroma("brown").hex("rgba"), size: 5, type: "arrow", zIndex: 60})
+            }
+        }
     }
 
     // Changes state to AppState.STARTED, also used as Restart
@@ -43,6 +75,9 @@ function App() {
         setStartArticle(start);
         updateArticle(start);
         setEndArticle(end);
+
+        setAlgoDone(false);
+        handleAlgo(start.title, end.title).then(()=>setAlgoDone(true))
 
         setAppState(AppState.STARTED);
     }
@@ -54,15 +89,16 @@ function App() {
         setEndArticle(null);
 
         graph.clear();
+        setAlgoDone(false);
 
         setAppState(AppState.MENU);
     }
 
     return (
-        <ArticleContext.Provider value={{appState, currentArticle, articleList, updateArticle, startGame, startArticle, endArticle, reset, graph}}>
+        <ArticleContext.Provider value={{appState, algoDone, currentArticle, articleList, updateArticle, startGame, startArticle, endArticle, reset, graph}}>
             <div className="app">
                 <Navbar/>
-                <button onClick={()=>updateArticle(endArticle!)}>test</button>
+                <button className="btn rounded-btn btn-error" onClick={()=>updateArticle(endArticle!)}>Cheat</button>
                 <div className="flex flex-grow">
                     <Sidebar/>
                     <MainContent/>

@@ -22,10 +22,11 @@ const WikiArticle = () => {
     useEffect( ()=>{
         if(currentArticle && currentArticle.title !== loadedArticleName){
             setIsLoading(true);
+            setLoadedArticleName(currentArticle.title);
             fetchArticle(currentArticle.link)
                 .then(response =>{
                     setHtml(response.html);
-                    setLoadedArticleName(response.title);
+                    console.log(currentArticle);
                 })
         }
     }, [currentArticle]);

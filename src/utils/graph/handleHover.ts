@@ -45,7 +45,7 @@ export const handleHover = (renderer: Sigma<AbstractGraph>, graph: Graph) => {
 
         if (state.hoveredNeighbors && !state.hoveredNeighbors.has(node) && state.hoveredNode !== node) {
             res.label = "";
-            res.color = chroma(res.color!).desaturate(0.1).css();
+            res.color = chroma(res.color!).desaturate(0.1).hex("rgba");
         } else {
             res.zIndex = 10;
         }

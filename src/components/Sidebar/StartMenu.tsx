@@ -23,6 +23,7 @@ const StartMenu = () => {
 
     return(
         <div className="flex-col mx-auto">
+            <p>Select the articles to begin.</p>
             <ArticleCombobox label={"Starting article"} onSelect={setStartArticle}/>
             <ArticleCombobox label={"Ending Article"} onSelect={setEndArticle}/>
             <button

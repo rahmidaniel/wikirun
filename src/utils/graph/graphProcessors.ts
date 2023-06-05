@@ -15,7 +15,7 @@ import {calculateEdgeColor, getColorLinear} from "./colorHelpers";
  */
 function updateGraph(links: string[], graph: Graph<Attributes, Attributes, Attributes>, nodeKey: string, inheritedAttributes: Attributes, groupColor?: string) {
     // Assign new color for node group
-    if(groupColor === undefined) groupColor = getColorLinear(inheritedAttributes.color, chroma.random().css());
+    if(groupColor === undefined) groupColor = getColorLinear(inheritedAttributes.color, chroma.random().hex("rgba"));
 
     // Calculate the angle between each child node
 
@@ -66,10 +66,10 @@ export async function loadNeighbors(nodeKey: string, graph: Graph<Attributes, At
 
     // Add loading label and make it semi transparent
     graph.setNodeAttribute(nodeKey, 'label', nodeKey + " [LOADING...]");
-    graph.updateNodeAttribute(nodeKey, 'color', (color)=> chroma(color).alpha(0.4).css());
+    graph.updateNodeAttribute(nodeKey, 'color', (color)=> chroma(color).alpha(0.4).hex("rgba"));
 
     // Processes links in batches as they arrive from fetch. Same color for the whole fetch.
-    const groupColor = getColorLinear(inheritedAttributes.color, chroma.random().css());
+    const groupColor = getColorLinear(inheritedAttributes.color, chroma.random().hex("rgba"));
     const handleBatch = (linkBatch: string[]) => {
         updateGraph(linkBatch, graph, nodeKey, inheritedAttributes, groupColor);
     }
@@ -83,5 +83,5 @@ export async function loadNeighbors(nodeKey: string, graph: Graph<Attributes, At
 
     // Turn it back from loading state
     graph.setNodeAttribute(nodeKey, 'label', nodeKey);
-    graph.updateNodeAttribute(nodeKey, 'color', (color)=> chroma(color).alpha(1).css());
+    graph.updateNodeAttribute(nodeKey, 'color', (color)=> chroma(color).alpha(1).hex("rgba"));
 }

@@ -9,6 +9,7 @@ export const fetchArticle = async (pageName: string): Promise<articleResult> => 
             page: decodeURIComponent(pageName),
             disableeditsection: true,
             disabletoc: true,
+            useskin: "modern",
             redirects: true,
             origin: "*"
         }

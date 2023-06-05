@@ -1,7 +1,7 @@
 import chroma from "chroma-js";
 
 export const baseSize = 50;
-export const baseColor = chroma('orange').css();
+export const baseColor = chroma('orange').hex("rgba");
 
 /**
  * Calculates 'downscaled' node size with a logarithmic function
