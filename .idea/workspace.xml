@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="feat(backend): init backend">
-      <change beforePath="$PROJECT_DIR$/angular/backend" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rahmidaniel&quot;
+  }
+}</component>
+  <component name="GitLabDefaultAccount">
+    <option name="defaultAccountId" value="f627094b-6cff-4ede-937b-44ca55912d93" />
   </component>
   <component name="GitToolBoxStore">
     <option name="recentBranches">
@@ -47,6 +55,15 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="a39cff49-0c60-4540-bc75-4e5d8036161d" />
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:/rahmidaniel/wikirun.git&quot;,
+    &quot;accountId&quot;: &quot;a39cff49-0c60-4540-bc75-4e5d8036161d&quot;
+  }
+}</component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -70,7 +87,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.16.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.5&quot;,
@@ -214,6 +231,8 @@
       <workItem from="1759004447911" duration="151000" />
       <workItem from="1759004600382" duration="16000" />
       <workItem from="1759004623215" duration="1074000" />
+      <workItem from="1759007481800" duration="13000" />
+      <workItem from="1759007496099" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="feat(react): move project">
       <option name="closed" value="true" />
