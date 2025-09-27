@@ -1,0 +1,9 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "scripts": {
+    "ng": "ng",
+    "start:dev": "ng serve",
+    "build": "ng build"
+  }
+}

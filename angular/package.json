@@ -1,0 +1,86 @@
+{
+  "name": "wikirun",
+  "version": "0.1.0",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "start:frontend": "bun run --cwd frontend start:dev",
+    "start:backend": "bun run --cwd backend start:dev",
+    "start": "bun run start:frontend & bun run start:backend",
+    "format": "prettier --write \"**/*.{ts,html,scss}\"",
+    "lint": "eslint \"{backend,frontend}/**/*.{ts,html,scss}\" --fix"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "tabWidth": 2,
+    "arrowParens": "always",
+    "bracketSameLine": true,
+    "endOfLine": "auto",
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^20.3.0",
+    "@angular/compiler": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/router": "^20.3.0",
+    "@primeuix/themes": "^1.2.5",
+    "@tailwindcss/postcss": "^4.1.13",
+    "primeng": "^20.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/platform-express": "^11.0.1"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.3",
+    "@angular/cli": "^20.3.3",
+    "@angular/compiler-cli": "^20.3.0",
+    "daisyui": "^5.1.24",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13",
+    "typescript": "~5.9.2",
+    "prettier": "^3.4.2",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-prettier": "^5.4.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.30.0",
+    "typescript-eslint": "^8.35.0",
+    "@typescript-eslint/eslint-plugin": "^8.34.0",
+    "@typescript-eslint/parser": "^8.34.0",
+    "@typescript-eslint/utils": "8.44.1",
+    "@typescript-eslint/types": "8.44.1",
+    "@angular-eslint/eslint-plugin-template": "20.3.0",
+    "@angular-eslint/template-parser": "20.3.0",
+    "@angular-eslint/utils": "20.3.0",
+
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@types/express": "^5.0.0",
+    "source-map-support": "^0.5.21",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2"
+  }
+}

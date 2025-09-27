@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="feat(backend): init backend">
+      <change beforePath="$PROJECT_DIR$/angular/backend" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/main.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1759005279" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feat/angular-init" />
+                    <option name="lastUsedInstant" value="1759005278" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/angular/package.json" />
+    <dismissed value="$PROJECT_DIR$/react/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="32XyASlpvWugwcCF5E4XUPFX3Nm" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.16.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.5&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/daniel/Desktop/Dev/wikirun&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
+    &quot;npm.Frontend.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.format.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start-both.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start:backend.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start:frontend.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/daniel/Desktop/Dev/wikirun/angular/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/daniel/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/angular/wikirun" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/angular" />
+      <recent name="$PROJECT_DIR$/react" />
+      <recent name="$PROJECT_DIR$/angular/wikirun/frontend" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="Backend" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:backend" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Frontend" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:frontend" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/react/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="format" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.Backend" />
+      <item itemvalue="npm.Frontend" />
+      <item itemvalue="npm.dev" />
+      <item itemvalue="npm.format" />
+      <item itemvalue="npm.lint" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.lint" />
+        <item itemvalue="npm.format" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="" />
+      <created>1757581067690</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757581067690</updated>
+      <workItem from="1757581068841" duration="3153000" />
+      <workItem from="1757592259829" duration="136000" />
+      <workItem from="1757592457409" duration="44000" />
+      <workItem from="1757592511568" duration="599000" />
+      <workItem from="1758973000760" duration="7945000" />
+      <workItem from="1758996940557" duration="242000" />
+      <workItem from="1758997188202" duration="43000" />
+      <workItem from="1758997241390" duration="4238000" />
+      <workItem from="1759002908224" duration="17000" />
+      <workItem from="1759002926438" duration="16000" />
+      <workItem from="1759002943122" duration="50000" />
+      <workItem from="1759002994461" duration="16000" />
+      <workItem from="1759003019284" duration="732000" />
+      <workItem from="1759003777671" duration="16000" />
+      <workItem from="1759003800029" duration="639000" />
+      <workItem from="1759004447911" duration="151000" />
+      <workItem from="1759004600382" duration="16000" />
+      <workItem from="1759004623215" duration="1074000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat(react): move project">
+      <option name="closed" value="true" />
+      <created>1759004091268</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1759004091268</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat(angular): move project, update basics">
+      <option name="closed" value="true" />
+      <created>1759004161811</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759004161811</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat(backend): init backend">
+      <option name="closed" value="true" />
+      <created>1759004173862</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1759004173862</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat(backend): init backend">
+      <option name="closed" value="true" />
+      <created>1759004317201</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759004317201</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat(backend): init backend">
+      <option name="closed" value="true" />
+      <created>1759004471463</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759004471463</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/angular/backend" />
+    </ignored-roots>
+    <MESSAGE value="feat(react): move project" />
+    <MESSAGE value="feat(angular): move project, update basics" />
+    <MESSAGE value="feat(backend): init backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): init backend" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+  </component>
+</project>
