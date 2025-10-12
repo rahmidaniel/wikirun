@@ -38,6 +38,7 @@ frontend/.angular/cache
 testem.log
 /typings
 __screenshots__/
+.env
 
 # System files
 .DS_Store

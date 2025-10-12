@@ -2,8 +2,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
+    "strictNullChecks": true,
     "sourceMap": true,
     "noImplicitOverride": true,
+    "removeComments": true,
+    "incremental": true,
     "noPropertyAccessFromIndexSignature": true,
     "strictPropertyInitialization": false,
     "noImplicitReturns": true,
@@ -11,12 +14,19 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
     "lib": ["ES2022", "DOM"],
     "moduleResolution": "bundler",
-    "paths": {}
+    "baseUrl": ".",
+    "paths": {
+      "@common": ["common"],
+      "@common/*": ["common/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -25,12 +35,5 @@
     "typeCheckHostBindings": true,
     "strictTemplates": true
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "coverage",
-    "documentation",
-    "tmp",
-    ".angular",
-  ]
+  "exclude": ["node_modules", "dist", "coverage", "documentation", "tmp", ".angular"]
 }

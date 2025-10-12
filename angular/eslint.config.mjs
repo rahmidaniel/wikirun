@@ -43,7 +43,6 @@ export default tseslint.config(
         ecmaVersion: 'latest',
         sourceType: 'module',
         project: ['./tsconfig.json'],
-        tsconfigRootDir: '.',
       },
     },
   },
@@ -104,6 +103,7 @@ export default tseslint.config(
           allowNumber: true,
         },
       ],
+      '@typescript-eslint/no-extraneous-class': 'off',
 
       'prettier/prettier': 'warn',
 
@@ -116,6 +116,16 @@ export default tseslint.config(
               pattern: '@angular/**',
               group: 'builtin',
               position: 'before',
+            },
+            {
+              pattern: '@nestjs/**',
+              group: 'builtin',
+              position: 'before',
+            },
+            {
+              pattern: '@common/**',
+              group: 'builtin',
+              position: 'after',
             },
           ],
           pathGroupsExcludedImportTypes: ['builtin'],

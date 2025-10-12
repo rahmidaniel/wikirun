@@ -4,8 +4,72 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="feat(backend): init backend">
+    <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="chore(git): update git ignore">
+      <change afterPath="$PROJECT_DIR$/angular/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/article/article.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/article/article.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/article/article.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/search/search.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/search/search.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/search/search.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/utils/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/utils/wiki-fetch.function.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/app-state.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/article-result.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/article.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/link.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/links-response.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/links-result.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/timed-article.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/environments/environment.development.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/api.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/game-state.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/angular/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/.postcssrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/.postcssrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/nest-cli.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/nest-cli.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/app.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/app.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/angular/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/angular/eslint.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +79,15 @@
   <component name="ChangesViewManager">
     <option name="groupingKeys">
       <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+      </list>
     </option>
   </component>
   <component name="Git.Settings">
@@ -75,47 +148,51 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="32XyASlpvWugwcCF5E4XUPFX3Nm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.16.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.5&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/daniel/Desktop/Dev/wikirun&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
-    &quot;npm.Frontend.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.format.executor&quot;: &quot;Run&quot;,
-    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start-both.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start:backend.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start:frontend.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/daniel/Desktop/Dev/wikirun/angular/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/daniel/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
+    "ignore_missing_gitignore": "true",
+    "javascript.nodejs.core.library.configured.version": "22.16.0",
+    "javascript.nodejs.core.library.typings.version": "22.16.5",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/daniel/Desktop/Dev/thesis/angular",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "bun",
+    "npm.Frontend.executor": "Run",
+    "npm.dev.executor": "Run",
+    "npm.format.executor": "Run",
+    "npm.lint.executor": "Run",
+    "npm.start-both.executor": "Run",
+    "npm.start.executor": "Run",
+    "npm.start:backend.executor": "Run",
+    "npm.start:frontend.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/Users/daniel/Desktop/Dev/thesis/angular/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/daniel/Desktop/Dev/thesis/angular/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -127,49 +204,24 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/angular" />
       <recent name="$PROJECT_DIR$/src/angular/wikirun" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/angular" />
-      <recent name="$PROJECT_DIR$/react" />
-      <recent name="$PROJECT_DIR$/angular/wikirun/frontend" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/angular/backend" />
+      <recent name="$PROJECT_DIR$/angular/backend/src" />
+      <recent name="$PROJECT_DIR$/angular/common" />
+      <recent name="$PROJECT_DIR$/angular/frontend/src/shared/utils" />
+      <recent name="$PROJECT_DIR$/angular/frontend" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/angular/frontend/src/shared/routes.ts" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
-    <configuration name="Backend" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start:backend" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="Frontend" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start:frontend" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/react/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.start:frontend">
     <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
+      <package-json value="$PROJECT_DIR$/angular/package.json" />
       <command value="run" />
       <scripts>
         <script value="format" />
@@ -179,7 +231,7 @@
       <method v="2" />
     </configuration>
     <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/angular/wikirun/package.json" />
+      <package-json value="$PROJECT_DIR$/angular/package.json" />
       <command value="run" />
       <scripts>
         <script value="lint" />
@@ -188,18 +240,32 @@
       <envs />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="npm.Backend" />
-      <item itemvalue="npm.Frontend" />
-      <item itemvalue="npm.dev" />
-      <item itemvalue="npm.format" />
-      <item itemvalue="npm.lint" />
-    </list>
+    <configuration name="start:backend" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/angular/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:backend" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start:frontend" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/angular/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:frontend" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
-        <item itemvalue="npm.lint" />
+        <item itemvalue="npm.start:frontend" />
+        <item itemvalue="npm.start:backend" />
         <item itemvalue="npm.format" />
+        <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
   </component>
@@ -233,6 +299,7 @@
       <workItem from="1759004623215" duration="1074000" />
       <workItem from="1759007481800" duration="13000" />
       <workItem from="1759007496099" duration="6000" />
+      <workItem from="1760270210378" duration="25997000" />
     </task>
     <task id="LOCAL-00001" summary="feat(react): move project">
       <option name="closed" value="true" />
@@ -279,6 +346,37 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/angular/common/models/article-result.interface.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/link.interface.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-response.interface.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-response.interface.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-result.interface.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/app-state.enum.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/index.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/timed-article.interface.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/article-result.interface.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/timed-article.interface.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-result.interface.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/index.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/article.interface.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/app-state.enum.js" />
+        <option value="$PROJECT_DIR$/angular/common/models/app-state.enum.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/article.interface.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/article-result.interface.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/index.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/link.interface.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/link.interface.js.map" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/article.interface.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-response.interface.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/timed-article.interface.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-result.interface.d.ts" />
+        <option value="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -312,7 +410,8 @@
     <MESSAGE value="feat(react): move project" />
     <MESSAGE value="feat(angular): move project, update basics" />
     <MESSAGE value="feat(backend): init backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): init backend" />
+    <MESSAGE value="chore(git): update git ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(git): update git ignore" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

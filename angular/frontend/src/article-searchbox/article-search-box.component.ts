@@ -1,0 +1,41 @@
+import { Component, inject, input, output, signal } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { FormsModule } from '@angular/forms';
+
+import { Article } from '@common';
+import { AutoComplete } from 'primeng/autocomplete';
+import { FloatLabel } from 'primeng/floatlabel';
+import { of, switchMap } from 'rxjs';
+
+import { ApiService } from '../shared/services/api.service';
+
+@Component({
+  selector: 'app-article-search-box',
+  imports: [AutoComplete, FloatLabel, FormsModule],
+  templateUrl: './article-search-box.component.html',
+  styleUrl: './article-search-box.component.css',
+})
+export class ArticleSearchBoxComponent {
+  private readonly apiService = inject(ApiService);
+
+  readonly label = input<string | undefined>(undefined);
+
+  currentArticle: Article | undefined;
+  readonly select = output<Article>();
+
+  query = signal<string>('');
+
+  suggestions = toSignal(
+    toObservable(this.query).pipe(switchMap((query) => (query ? this.apiService.searchArticles(query) : of([])))),
+    { initialValue: [] }
+  );
+
+  onSearch(query: string) {
+    this.query.set(query);
+  }
+
+  onSelect(article: Article | undefined) {
+    console.log('select', article);
+    this.select.emit(article!);
+  }
+}

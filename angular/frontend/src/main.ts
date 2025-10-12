@@ -5,6 +5,4 @@ import { appConfig } from './app/app.config';
 
 bootstrapApplication(App, appConfig).catch((err: unknown) => {
   console.error(err);
-
-  //hi
 });

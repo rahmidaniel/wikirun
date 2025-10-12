@@ -1,51 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@reference "../styles.css";
 
-@layer components {
-  .app {
-    @apply flex flex-col h-screen;
-  }
+.article-loading {
+  @apply blur-sm pointer-events-none cursor-none;
+}
+.mw-parser-output {
+  background-color: red;
+  @apply flex-auto w-11/12 overflow-y-auto mx-auto my-8 bg-accent;
+}
 
-  .my-navbar {
-    @apply navbar bg-base-100 h-16 shadow-2xl z-50 rounded-3xl;
-  }
+/*External links should be non intractable, + new pages */
+.mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new, .mw-parser-output a.selflink
+{
+  @apply link-error dark:link-error pointer-events-none cursor-none;
+}
 
-  .my-sidebar {
-    @apply flex-shrink-0 sticky h-screen top-0 w-1/6 min-w-fit px-4 overflow-hidden
-    flex flex-col shadow-2xl
-    border-r border-primary dark:border-accent
-    prose text-center;
-  }
+.mw-parser-output a {
+  @apply link-primary dark:link-accent;
+}
 
-  .mw-parser-output {
-    @apply flex-auto w-11/12 overflow-y-auto mx-auto my-8;
-  }
+/*  todo: headers are not working??? from the official wiki stylesheet  */
 
-  /*External links should be non intractable, + new pages */
-  .mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new, .mw-parser-output a.selflink
-  {
-    @apply link-error dark:link-error pointer-events-none cursor-none;
-  }
-
-  .mw-parser-output a {
-    @apply link-primary dark:link-accent;
-  }
-
-  /*  todo: headers are not working??? from the official wiki stylesheet  */
-
-  .mw-parser-output h1 {
-    @apply text-3xl font-semibold pt-4 pb-1 border-b;
-  }
-  .mw-parser-output h2 {
-    @apply text-2xl font-semibold pt-4 pb-1 border-b;
-  }
-  .mw-parser-output h3 {
-    @apply text-xl font-bold py-2;
-  }
-  .mw-parser-output h4 {
-    @apply font-bold py-2;
-  }
+.mw-parser-output h1 {
+  @apply text-3xl font-semibold pt-4 pb-1 border-b;
+}
+.mw-parser-output h2 {
+  @apply text-2xl font-semibold pt-4 pb-1 border-b;
+}
+.mw-parser-output h3 {
+  @apply text-xl font-bold py-2;
+}
+.mw-parser-output h4 {
+  @apply font-bold py-2;
 }
 
 /* Wiki styles were replicated to taste */

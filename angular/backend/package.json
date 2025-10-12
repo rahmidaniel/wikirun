@@ -5,6 +5,8 @@
   "scripts": {
     "start": "nest start",
     "start:dev": "nest start --watch"
+  },
+  "dependencies": {
+    "@nestjs/config": "^4.0.2"
   }
 }
-

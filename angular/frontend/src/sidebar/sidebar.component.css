@@ -1,0 +1,8 @@
+@reference '../styles.css';
+
+.app-sidebar {
+  @apply flex-shrink-0 sticky h-screen top-0 w-1/6 min-w-fit px-4 overflow-hidden
+  flex flex-col shadow-2xl
+  border-r border-primary dark:border-accent
+  prose text-center;
+}
