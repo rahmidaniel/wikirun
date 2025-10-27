@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Article, ArticleResult, LinksResponse } from '@common';
+import { Article, ArticleResult, LinksResponse, LobbyResponse } from '@common';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
@@ -13,6 +13,14 @@ export class ApiService {
   private readonly baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
+
+  createLobby(): Observable<LobbyResponse> {
+    return this.http.post<LobbyResponse>(`${this.baseUrl}/lobby`, {});
+  }
+
+  joinLobby(code: string): Observable<LobbyResponse> {
+    return this.http.post<LobbyResponse>(`${this.baseUrl}/lobby/${code}/join`, {});
+  }
 
   /**
    * Fetch an article by its title

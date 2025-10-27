@@ -1,5 +1,7 @@
-export enum AppState {
+export enum GameState {
   MENU,
-  STARTED,
+  WAITING,
+  IN_GAME,
+  RESULTS,
   ENDED,
 }

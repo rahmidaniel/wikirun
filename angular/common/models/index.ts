@@ -6,3 +6,7 @@ export * from './links-response.interface';
 export * from './links-result.interface';
 export * from './links-result-reverse.interface';
 export * from './timed-article.interface';
+export * from './player.interface';
+export * from './lobby.interface';
+export * from './lobby-response.interface';
+export * from './player-run.interface';

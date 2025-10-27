@@ -3,22 +3,20 @@
 .article-loading {
   @apply blur-sm pointer-events-none cursor-none;
 }
+
 .mw-parser-output {
-  background-color: red;
-  @apply flex-auto w-11/12 overflow-y-auto mx-auto my-8 bg-accent;
+  @apply flex-auto w-11/12 overflow-y-auto mx-auto my-8;
 }
 
 /*External links should be non intractable, + new pages */
 .mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new, .mw-parser-output a.selflink
 {
-  @apply link-error dark:link-error pointer-events-none cursor-none;
+  @apply link link-error dark:link-error pointer-events-none cursor-none;
 }
 
 .mw-parser-output a {
-  @apply link-primary dark:link-accent;
+  @apply link link-primary dark:link-accent;
 }
-
-/*  todo: headers are not working??? from the official wiki stylesheet  */
 
 .mw-parser-output h1 {
   @apply text-3xl font-semibold pt-4 pb-1 border-b;
@@ -35,7 +33,8 @@
 
 /* Wiki styles were replicated to taste */
 
-.infobox {
+.infobox,
+.sidebar {
   @apply relative float-right clear-right ml-2 max-w-xs shadow-lg bg-base-100;
 }
 .infobox-title {
@@ -56,7 +55,19 @@
 
 .wikitable,
 table {
-  @apply table-zebra table-compact border-collapse my-4 border border-neutral;
+  @apply table table-zebra table-sm border-collapse w-fit my-4 border border-neutral;
+
+  ul {
+    @apply flex flex-wrap gap-2 list-inside ml-0;
+
+    li {
+      @apply list-disc pl-2;
+    }
+
+    li:first-child {
+      @apply list-none;
+    }
+  }
 }
 
 .tleft,
@@ -74,7 +85,7 @@ table {
 }
 
 .thumbinner {
-  @apply card card-bordered shadow-xl;
+  @apply card border rounded-md p-2 shadow-xl;
 }
 
 .thumbinner img {
@@ -113,6 +124,10 @@ blockquote {
   @apply mx-auto px-16;
 }
 
+.quotebox {
+  @apply card border p-4 m-4 w-fit bg-base-200 max-w-1/2 overflow-auto max-h-96;
+}
+
 /* inlining and inverting math equations for dark mode*/
 .mwe-math-fallback-image-inline {
   @apply inline-block dark:invert-[1];
@@ -133,4 +148,33 @@ dd {
 
 p {
   @apply mb-2;
+}
+
+.mw-halign-left {
+  @apply float-left clear-left ml-0;
+}
+
+.mw-halign-right,
+figure:not(.mw-halign-left):not(.mw-halign-center) {
+  @apply float-right clear-right mr-0;
+}
+
+.mw-halign-center {
+  @apply block mx-auto clear-both;
+}
+
+figure {
+  @apply card border p-4 m-4 w-fit bg-base-300;
+
+  img {
+    @apply mx-auto dark:bg-neutral-content;
+  }
+
+  > .mw-file-description {
+    @apply border border-neutral-content;
+  }
+
+  figcaption {
+    @apply text-sm w-0 min-w-full break-words;
+  }
 }

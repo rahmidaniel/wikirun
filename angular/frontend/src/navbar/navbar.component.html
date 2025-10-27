@@ -1,6 +1,8 @@
 <div class="app-navbar">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl" [routerLink]="AppRoutes.home">Wikipedia Speedrun</a>
+    <a class="btn btn-ghost normal-case text-xl" [routerLink]="AppRoutes.home" (click)="onHomeClick($event)"
+      >Wikipedia Speedrun</a
+    >
   </div>
   <label class="swap swap-rotate">
     <input type="checkbox" class="theme-controller" value="dark" />

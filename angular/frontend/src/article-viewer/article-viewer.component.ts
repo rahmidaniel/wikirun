@@ -1,6 +1,6 @@
-import { Component, contentChild, effect, ElementRef, inject, signal, untracked } from '@angular/core';
+import { Component, effect, ElementRef, inject, signal, untracked, viewChild, ViewEncapsulation } from '@angular/core';
 
-import { AppState } from '@common/models';
+import { GameState } from '@common/models';
 
 import { GameStateService } from '../shared/services/game-state.service';
 
@@ -9,10 +9,11 @@ import { GameStateService } from '../shared/services/game-state.service';
   imports: [],
   templateUrl: './article-viewer.component.html',
   styleUrl: './article-viewer.component.css',
+  encapsulation: ViewEncapsulation.None,
 })
 export class ArticleViewerComponent {
   protected readonly gameStateService = inject(GameStateService);
-  private readonly articleRef = contentChild<ElementRef<HTMLDivElement>>('articleRef');
+  private readonly articleRef = viewChild<ElementRef<HTMLDivElement>>('articleRef');
 
   isLoading = signal(false);
 
@@ -22,6 +23,7 @@ export class ArticleViewerComponent {
 
   private handleClick = (event: MouseEvent) => {
     event.preventDefault();
+    event.stopPropagation();
     if (event.target instanceof HTMLAnchorElement) {
       // substring(6) : /wiki/Article => Article
       this.isLoading.set(true);
@@ -39,35 +41,41 @@ export class ArticleViewerComponent {
         return;
       }
       this.isLoading.set(true);
-      const wikiRef = this.articleRef()!;
-      // References, Portals and other wikipedia elements
-      wikiRef.nativeElement.querySelector('#References')?.parentElement?.remove(); // todo: remove parent too
-      wikiRef.nativeElement
-        .querySelectorAll('.reference, .reflist, .plainlinks, .portalbox, .noprint')
-        .forEach((element) => {
-          element.remove();
-        });
 
-      // Attaching event listeners to all links
-      const links = wikiRef.nativeElement.querySelectorAll('a');
-      links?.forEach((link) => {
-        link.addEventListener('click', this.handleClick);
-      });
+      // Wait for the next tick to ensure innerHTML binding has completed
+      setTimeout(() => {
+        const wikiRef = this.articleRef();
+        if (!wikiRef) {
+          return;
+        }
 
-      this.scrollToTop();
-      this.isLoading.set(false);
+        // References, Portals and other wikipedia elements
+        wikiRef.nativeElement.querySelector('#References')?.parentElement?.remove();
+        wikiRef.nativeElement
+          .querySelectorAll('.reference, .reflist, .plainlinks, .portalbox, .noprint')
+          .forEach((element) => {
+            element.remove();
+          });
 
-      // Should stay blurred if ended
-      if (untracked(this.gameStateService.state) === AppState.ENDED) {
-        this.isLoading.set(true);
-      }
-
-      // Removing listeners on dismount
-      onCleanup(() => {
+        // Attaching event listeners to all links
+        const links = wikiRef.nativeElement.querySelectorAll('a');
         links?.forEach((link) => {
-          link.removeEventListener('click', this.handleClick);
+          link.addEventListener('click', this.handleClick);
         });
-      });
+
+        this.scrollToTop();
+        this.isLoading.set(false);
+
+        if (untracked(this.gameStateService.state) === GameState.ENDED) {
+          this.isLoading.set(true);
+        }
+
+        onCleanup(() => {
+          links?.forEach((link) => {
+            link.removeEventListener('click', this.handleClick);
+          });
+        });
+      }, 0);
     });
   }
 }

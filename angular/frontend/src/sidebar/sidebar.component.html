@@ -4,6 +4,9 @@
     @case (AppState.MENU) {
       <ng-container *ngTemplateOutlet="menu"></ng-container>
     }
+    @case (AppState.WAITING) {
+      <ng-container *ngTemplateOutlet="menu"></ng-container>
+    }
     @default {
       <ng-container *ngTemplateOutlet="progress"></ng-container>
     }
@@ -11,13 +14,14 @@
 </div>
 
 <ng-template #menu>
-  <div class="flex-col mx-auto">
+  <div class="flex flex-col mx-auto gap-8">
     <p>Select the articles to begin.</p>
     <app-article-search-box label="Start Article" (select)="onStartArticleSelected($event)"> </app-article-search-box>
     <app-article-search-box label="End Article" (select)="onEndArticleSelected($event)"> </app-article-search-box>
     <button
       [class.btn-disabled]="!gameStateService.isReady()"
       class="btn btn-success w-1/2 mt-4 rounded-2xl"
+      [disabled]="!gameStateService.isHost()"
       (click)="gameStateService.onStart()">
       Start
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 p-0.5">
@@ -41,21 +45,21 @@
           </tr>
         </thead>
         <tbody>
-          @for (item of gameStateService.progressTable(); track item.time) {
+          @for (item of gameStateService.articleHistory(); track item.time) {
             <tr>
               <td class="pl-2">{{ item.title }}</td>
-              <td>{{ item.time }}</td>
+              <td>{{ item.time | date: 'ss.SSS' }}</td>
             </tr>
           }
         </tbody>
       </table>
     </div>
     <div class="rounded-2xl bg-base-300 m-2 p-2">
-      <h1 class="text-2xl text-green-600 my-auto">{{ 123 }}</h1>
+      <h1 class="text-2xl text-green-600 my-auto">{{ gameStateService.elapsedTime() | date: 'ss.SSS' }}</h1>
     </div>
 
     @if (gameStateService.state() === AppState.ENDED) {
-      <button (click)="gameStateService.onReset()" class="btn btn-success w-1/2 mt-4 mx-auto rounded-2xl">
+      <button (click)="gameStateService.reset()" class="btn btn-success w-1/2 mt-4 mx-auto rounded-2xl">
         New Game
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 p-0.5">
           <path

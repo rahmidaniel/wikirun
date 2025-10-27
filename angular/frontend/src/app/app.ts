@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 
-import { AppState } from '@common';
+import { GameState } from '@common';
 
 import { ArticleViewerComponent } from '../article-viewer/article-viewer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -15,5 +15,5 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 })
 export class App {
   protected readonly gameStateService = inject(GameStateService);
-  protected readonly AppState = AppState;
+  protected readonly AppState = GameState;
 }

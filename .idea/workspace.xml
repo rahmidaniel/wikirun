@@ -4,72 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="chore(git): update git ignore">
-      <change afterPath="$PROJECT_DIR$/angular/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/article/article.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/article/article.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/article/article.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/search/search.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/search/search.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/search/search.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/utils/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/utils/wiki-fetch.function.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/app-state.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/article-result.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/article.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/link.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/links-response.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/links-result.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/timed-article.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/environments/environment.development.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/api.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/game-state.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="refactor(hell): wip">
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/algorithm/algorithm.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/algorithm/algorithm.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/db/db.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/socket/game.gateway.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/socket/game.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/lobby-response.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/lobby.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/player-run.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/models/player.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/common/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/lobby.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/socket.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/angular/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/.postcssrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/.postcssrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/backend/nest-cli.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/nest-cli.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/backend/src/app.controller.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/backend/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/backend/src/app.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/backend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/angular/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/common/models/app-state.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/app-state.enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/common/models/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/common/models/timed-article.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/timed-article.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/angular/eslint.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/shared/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/shared/services/game-state.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/game-state.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +57,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -163,12 +135,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "dev",
     "ignore_missing_gitignore": "true",
     "javascript.nodejs.core.library.configured.version": "22.16.0",
     "javascript.nodejs.core.library.typings.version": "22.16.5",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/daniel/Desktop/Dev/thesis/angular",
+    "last_opened_file_path": "/Users/daniel/Desktop/Dev/thesis/angular/common/models",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -187,7 +160,7 @@
     "npm.start:backend.executor": "Run",
     "npm.start:frontend.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/Users/daniel/Desktop/Dev/thesis/angular/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "settings.editor.selected.configurable": "configurable.tailwindcss",
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "/Users/daniel/Desktop/Dev/thesis/angular/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -204,22 +177,33 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/angular/common/models" />
       <recent name="$PROJECT_DIR$/angular" />
       <recent name="$PROJECT_DIR$/src/angular/wikirun" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/angular/backend" />
-      <recent name="$PROJECT_DIR$/angular/backend/src" />
+      <recent name="$PROJECT_DIR$/angular/backend/src/modules/algorithm" />
+      <recent name="$PROJECT_DIR$/angular/backend/src/modules/lobby" />
+      <recent name="$PROJECT_DIR$/angular/backend/src/modules" />
       <recent name="$PROJECT_DIR$/angular/common" />
-      <recent name="$PROJECT_DIR$/angular/frontend/src/shared/utils" />
-      <recent name="$PROJECT_DIR$/angular/frontend" />
+      <recent name="$PROJECT_DIR$/angular/backend" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/angular/frontend/src/shared/routes.ts" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start:frontend">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/react/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/angular/package.json" />
       <command value="run" />
@@ -264,10 +248,18 @@
       <list>
         <item itemvalue="npm.start:frontend" />
         <item itemvalue="npm.start:backend" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.27397.92" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>
@@ -299,7 +291,11 @@
       <workItem from="1759004623215" duration="1074000" />
       <workItem from="1759007481800" duration="13000" />
       <workItem from="1759007496099" duration="6000" />
-      <workItem from="1760270210378" duration="25997000" />
+      <workItem from="1760270210378" duration="26213000" />
+      <workItem from="1760435617298" duration="1952000" />
+      <workItem from="1760778514057" duration="172000" />
+      <workItem from="1761302445023" duration="34000" />
+      <workItem from="1761302549542" duration="47846000" />
     </task>
     <task id="LOCAL-00001" summary="feat(react): move project">
       <option name="closed" value="true" />
@@ -341,42 +337,19 @@
       <option name="project" value="LOCAL" />
       <updated>1759004471463</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="refactor(hell): wip">
+      <option name="closed" value="true" />
+      <created>1760302652645</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1760302652645</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/angular/common/models/article-result.interface.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/link.interface.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-response.interface.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-response.interface.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-result.interface.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/app-state.enum.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/index.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/timed-article.interface.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/article-result.interface.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/timed-article.interface.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-result.interface.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/index.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/article.interface.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/app-state.enum.js" />
-        <option value="$PROJECT_DIR$/angular/common/models/app-state.enum.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/article.interface.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/article-result.interface.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/index.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/link.interface.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/link.interface.js.map" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/article.interface.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-response.interface.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/timed-article.interface.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-result.interface.d.ts" />
-        <option value="$PROJECT_DIR$/angular/common/models/links-result-reverse.interface.js" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -411,7 +384,8 @@
     <MESSAGE value="feat(angular): move project, update basics" />
     <MESSAGE value="feat(backend): init backend" />
     <MESSAGE value="chore(git): update git ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(git): update git ignore" />
+    <MESSAGE value="refactor(hell): wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(hell): wip" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

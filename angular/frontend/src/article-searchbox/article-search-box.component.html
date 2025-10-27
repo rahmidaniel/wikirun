@@ -1,11 +1,12 @@
 <p-floatlabel>
   <p-auto-complete
-    [(ngModel)]="currentArticle"
+    [ngModel]="currentArticle"
     [suggestions]="suggestions()"
     (onSelect)="onSelect($event.value)"
-    forceSelection="true"
-    (completeMethod)="onSearch($event.query)"
+    (ngModelChange)="onSearch($event)"
+    forceSelection="false"
     optionLabel="title"
-    inputId="end_label" />
-  <label for="end_label">{{ label() }}</label>
+    required
+    [inputId]="label()" />
+  <label [for]="label()">{{ label() }}</label>
 </p-floatlabel>

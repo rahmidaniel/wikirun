@@ -1,9 +1,9 @@
-import { NgTemplateOutlet } from '@angular/common';
+import { DatePipe, NgTemplateOutlet } from '@angular/common';
 import { Component, contentChild, DestroyRef, ElementRef, inject } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 
-import { AppState, Article } from '@common/models';
+import { Article, GameState } from '@common/models';
 
 import { filter, tap } from 'rxjs';
 
@@ -12,17 +12,17 @@ import { GameStateService } from '../shared/services/game-state.service';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [NgTemplateOutlet, FormsModule, ArticleSearchBoxComponent],
+  imports: [NgTemplateOutlet, FormsModule, ArticleSearchBoxComponent, DatePipe],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  protected readonly AppState = AppState;
+  protected readonly AppState = GameState;
   protected readonly gameStateService = inject(GameStateService);
   protected readonly destroyRef = inject(DestroyRef);
 
   private readonly tableRef = contentChild<ElementRef<HTMLDivElement>>('tableRef');
-  private readonly tableChange$ = toObservable(this.gameStateService.progressTable).pipe(
+  private readonly tableChange$ = toObservable(this.gameStateService.articleHistory).pipe(
     filter((table) => !!table.length),
     tap(() => {
       console.log('sidebar scroll');
@@ -33,13 +33,14 @@ export class SidebarComponent {
 
   constructor() {
     this.tableChange$.subscribe();
+    this.gameStateService.onConnect();
   }
 
   onStartArticleSelected(article: Article) {
-    this.gameStateService.startArticle.set(article);
+    this.gameStateService.setStartArticle(article);
   }
 
   onEndArticleSelected(article: Article) {
-    this.gameStateService.endArticle.set(article);
+    this.gameStateService.setEndArticle(article);
   }
 }

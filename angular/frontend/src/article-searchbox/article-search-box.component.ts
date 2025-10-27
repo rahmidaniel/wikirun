@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Article } from '@common';
 import { AutoComplete } from 'primeng/autocomplete';
 import { FloatLabel } from 'primeng/floatlabel';
-import { of, switchMap } from 'rxjs';
+import { debounceTime, of, switchMap } from 'rxjs';
 
 import { ApiService } from '../shared/services/api.service';
 
@@ -19,23 +19,29 @@ export class ArticleSearchBoxComponent {
   private readonly apiService = inject(ApiService);
 
   readonly label = input<string | undefined>(undefined);
+  readonly select = output<Article>();
 
   currentArticle: Article | undefined;
-  readonly select = output<Article>();
 
   query = signal<string>('');
 
   suggestions = toSignal(
-    toObservable(this.query).pipe(switchMap((query) => (query ? this.apiService.searchArticles(query) : of([])))),
+    toObservable(this.query).pipe(
+      debounceTime(300),
+      switchMap((query) => (query ? this.apiService.searchArticles(query) : of([])))
+    ),
     { initialValue: [] }
   );
 
-  onSearch(query: string) {
-    this.query.set(query);
+  onSearch(query: string | undefined) {
+    this.query.set(query!);
   }
 
-  onSelect(article: Article | undefined) {
-    console.log('select', article);
-    this.select.emit(article!);
+  onSelect(article: Article) {
+    if (article) {
+      this.currentArticle = article;
+      this.select.emit(article);
+      this.query.set('');
+    }
   }
 }
