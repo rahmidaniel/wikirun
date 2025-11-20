@@ -1,12 +1,9 @@
-import { Component, effect, ElementRef, inject, signal, untracked, viewChild, ViewEncapsulation } from '@angular/core';
-
-import { GameState } from '@common/models';
+import { Component, effect, ElementRef, inject, signal, viewChild, ViewEncapsulation } from '@angular/core';
 
 import { GameStateService } from '../shared/services/game-state.service';
 
 @Component({
   selector: 'app-article-viewer',
-  imports: [],
   templateUrl: './article-viewer.component.html',
   styleUrl: './article-viewer.component.css',
   encapsulation: ViewEncapsulation.None,
@@ -24,32 +21,28 @@ export class ArticleViewerComponent {
   private handleClick = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    if (event.target instanceof HTMLAnchorElement) {
+    if (event.target instanceof HTMLAnchorElement && !this.isLoading()) {
       // substring(6) : /wiki/Article => Article
-      this.isLoading.set(true);
       this.gameStateService.updateArticle({ title: event.target.title, link: event.target.pathname.substring(6) });
+
+      this.isLoading.set(true);
     }
   };
 
   constructor() {
     effect((onCleanup) => {
       const html = this.gameStateService.currentArticleResult();
-      if (!html || !this.articleRef()) {
-        console.error(
-          `DEBUG: Article [${html?.title}] ref is ${this.articleRef()?.nativeElement ? 'defined' : 'undefined'}`
-        );
+      const wikiRef = this.articleRef();
+
+      if (!html || !wikiRef) {
         return;
       }
-      this.isLoading.set(true);
 
-      // Wait for the next tick to ensure innerHTML binding has completed
       setTimeout(() => {
-        const wikiRef = this.articleRef();
         if (!wikiRef) {
           return;
         }
 
-        // References, Portals and other wikipedia elements
         wikiRef.nativeElement.querySelector('#References')?.parentElement?.remove();
         wikiRef.nativeElement
           .querySelectorAll('.reference, .reflist, .plainlinks, .portalbox, .noprint')
@@ -57,18 +50,13 @@ export class ArticleViewerComponent {
             element.remove();
           });
 
-        // Attaching event listeners to all links
         const links = wikiRef.nativeElement.querySelectorAll('a');
         links?.forEach((link) => {
           link.addEventListener('click', this.handleClick);
         });
 
-        this.scrollToTop();
         this.isLoading.set(false);
-
-        if (untracked(this.gameStateService.state) === GameState.ENDED) {
-          this.isLoading.set(true);
-        }
+        this.scrollToTop();
 
         onCleanup(() => {
           links?.forEach((link) => {

@@ -21,7 +21,6 @@ export class SearchService {
 
     for (let i = 0; i < data[1]?.length; i++) {
       // https://en.wikipedia.org/wiki/ASD => 30 chars not needed from the start
-      // eslint-disable-next-line no-magic-numbers
       articles.push({ title: data[1][i], link: data[3][i].substring(30) });
     }
 

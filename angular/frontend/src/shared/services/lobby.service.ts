@@ -41,9 +41,25 @@ export class LobbyService {
 
   readonly lobbyUpdated$ = this.socketService.lobbyUpdated$;
   readonly gameStarted$ = this.socketService.gameStarted$;
-  readonly playerProgress$ = this.socketService.playerProgress$;
   readonly gameEnded$ = this.socketService.gameEnded$;
   readonly error$ = this.socketService.error$;
+
+  private subscriptionsInitialized = false;
+
+  private setupSubscriptions(): void {
+    if (this.subscriptionsInitialized) {
+      return;
+    }
+    this.subscriptionsInitialized = true;
+
+    this.lobbyUpdated$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lobbyData) => {
+      this.lobby.set(lobbyData);
+    });
+
+    this.error$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((error) => {
+      console.error('Lobby error:', error.message);
+    });
+  }
 
   async createLobby(): Promise<void> {
     const lobbyData = await firstValueFrom(this.apiService.createLobby());
@@ -54,14 +70,7 @@ export class LobbyService {
     this.socketService.connect();
     this.socketService.joinLobby(lobbyData.code, lobbyData.hostId);
 
-    this.lobbyUpdated$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lobbyData) => {
-      console.log('Lobby updated:', lobbyData);
-      this.lobby.set(lobbyData);
-    });
-
-    this.error$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((error) => {
-      console.error('Lobby error:', error.message);
-    });
+    this.setupSubscriptions();
   }
 
   async joinLobby(code: string): Promise<void> {
@@ -73,6 +82,8 @@ export class LobbyService {
 
     this.socketService.connect();
     this.socketService.joinLobby(code, newPlayer.id);
+
+    this.setupSubscriptions();
   }
 
   setArticles(startArticle?: Article, endArticle?: Article): void {
@@ -94,21 +105,11 @@ export class LobbyService {
   }
 
   sendArticleVisit(article: Article, timestamp: number): void {
-    const playerId = this.currentPlayerId();
-    if (!playerId) {
-      return;
-    }
-
-    this.socketService.sendArticleVisit(playerId, article, timestamp);
+    this.socketService.sendArticleVisit(this.currentPlayerId()!, article, timestamp);
   }
 
   updatePlayerName(name: string): void {
-    const playerId = this.currentPlayerId();
-    if (!playerId) {
-      return;
-    }
-
-    this.socketService.updatePlayerName(playerId, name);
+    this.socketService.updatePlayerName(this.currentPlayerId()!, name);
   }
 
   leaveLobby(): void {

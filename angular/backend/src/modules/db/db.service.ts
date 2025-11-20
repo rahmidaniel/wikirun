@@ -46,17 +46,11 @@ export class DBService {
 
   getPlayersForLobby(lobbyCode: string): Player[] {
     const lobby = this.getLobbyByCode(lobbyCode);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return (lobby?.playerIds ?? []).map((id) => this.players.get(id)!).filter(Boolean);
   }
 
-  createPlayerRun(run: PlayerRun): PlayerRun {
-    this.playerRuns.set(run.id, run);
-    return run;
-  }
-
-  getPlayerRun(playerId: string, lobbyId: string): PlayerRun | undefined {
-    return this.playerRuns.get(this.getRunKey({ lobbyId, id: playerId }));
+  getPlayerRun(id: string, lobbyId: string): PlayerRun | undefined {
+    return this.playerRuns.get(this.getRunKey({ lobbyId, id }));
   }
 
   updatePlayerRun(run: PlayerRun): PlayerRun {
@@ -72,10 +66,6 @@ export class DBService {
       }
     });
     return runs;
-  }
-
-  deletePlayerRun(playerId: string, lobbyId: string): boolean {
-    return this.playerRuns.delete(this.getRunKey({ lobbyId, id: playerId }));
   }
 
   private getRunKey(run: Pick<Player, 'lobbyId' | 'id'>): string {

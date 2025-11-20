@@ -1,0 +1,88 @@
+<div class="text-center">
+  <h1 class="text-4xl font-bold mb-4">Game Lobby</h1>
+</div>
+
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">Game Setup</h2>
+    <div class="divider">Selected Articles</div>
+    @if (lobbyService.isHost()) {
+      <div class="flex gap-4">
+        <app-article-search-box (select)="gameStateService.setStartArticle($event)" label="Start" />
+
+        <app-article-search-box (select)="gameStateService.setEndArticle($event)" label="End" />
+      </div>
+    } @else {
+      <div class="flex gap-4">
+        <div class="p-4 flex flex-col flex-grow bg-base-200 rounded-lg">
+          <span class="text-sm text-base-content/70 mb-1">Start</span>
+          <span class="font-semibold">{{ gameStateService.startArticle()?.title || 'Not selected' }}</span>
+        </div>
+        <div class="p-4 flex flex-col flex-grow bg-base-200 rounded-lg">
+          <span class="text-sm text-base-content/70 mb-1">End</span>
+          <span class="font-semibold">{{ gameStateService.endArticle()?.title || 'Not selected' }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">Players ({{ lobbyService.players().length }})</h2>
+    <div class="flex gap-4">
+      @for (player of lobbyService.players(); track player.id) {
+        @let isPlayer = player.id === lobbyService.currentPlayerId();
+        <div
+          class="flex flex-grow items-center gap-4 p-4 rounded-lg"
+          [class]="isPlayer ? 'bg-base-300' : 'bg-base-200'">
+          <span
+            class="status status-xl"
+            [class.animate-pulse]="isPlayer"
+            [style.background-color]="player.color"></span>
+          @if (isPlayer) {
+            <input
+              type="text"
+              class="input input-sm input-bordered w-1/3"
+              [value]="player.name"
+              placeholder="Enter a name..."
+              required
+              (blur)="updatePlayerName($any($event.target))"
+              (keydown.enter)="$any($event.target).blur()" />
+          } @else {
+            <span class="font-semibold">{{ player.name }}</span>
+          }
+          @if (player.id === lobbyService.lobby()?.hostId) {
+            <span class="text-sm text-base-content/50">Host</span>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+@if (shareUrl()) {
+  <div class="flex items-center justify-center gap-4">
+    <span class="font-mono bg-base-300 px-6 py-3 rounded-lg">{{ shareUrl() }}</span>
+    <button class="btn btn-lg btn-outline" (click)="copyToClipboard()">
+      @if (showCopiedText()) {
+        <span class="text-success"><i class="fa fa-check"></i> Copied Link!</span>
+      } @else {
+        <span class>Invite Others</span>
+      }
+    </button>
+  </div>
+}
+
+@if (lobbyService.isHost()) {
+  <div class="text-center">
+    <button
+      class="btn btn-success btn-xl"
+      [disabled]="!gameStateService.isReady()"
+      (click)="gameStateService.onStart()">
+      <span>Start Game</span>
+    </button>
+  </div>
+} @else {
+  <div class="text-center text-base-content/70">Waiting for host...</div>
+}

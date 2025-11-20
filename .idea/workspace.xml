@@ -4,44 +4,66 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="refactor(hell): wip">
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/algorithm/algorithm.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/algorithm/algorithm.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/db/db.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/socket/game.gateway.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/backend/src/modules/socket/game.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/lobby-response.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/lobby.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/player-run.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/models/player.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/common/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/lobby.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/socket.service.ts" afterDir="false" />
+    <list default="true" id="acdc6481-fe0a-4641-811e-3050445bf55e" name="Changes" comment="feat(ws, fe): wip">
+      <change afterPath="$PROJECT_DIR$/angular/common/models/path-result.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/game/game.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/game/game.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/graph-viewer/graph-viewer.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/graph-viewer/graph-viewer.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/home/home.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/home/home.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/lobby/lobby.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/lobby/lobby.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/graph/colorHelpers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/graph/graphDefaults.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/graph/handleClick.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/graph/handleDragNDrop.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/graph/loadNodeNeighbors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/playwright.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/backend/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/angular/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/algorithm/algorithm.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/algorithm/algorithm.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/db/db.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/db/db.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/links/links.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/links/links.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/links/links.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/lobby/lobby.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/search/search.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/search/search.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/modules/socket/game.gateway.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/modules/socket/game.gateway.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/utils/constants.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/backend/src/utils/wiki-fetch.function.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/backend/src/utils/wiki-fetch.function.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/angular/bun.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/common/models/app-state.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/app-state.enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/common/models/app-state.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/game-state.enum.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/common/models/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/common/models/timed-article.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/timed-article.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/common/models/lobby.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/lobby.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/common/models/player.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/player.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/angular/eslint.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular/common/models/game-result.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/app/app.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-searchbox/article-search-box.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/article-viewer/article-viewer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/navbar/navbar.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/shared/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/api.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/shared/services/game-state.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/game-state.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/shared/services/lobby.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/lobby.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/shared/services/socket.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/shared/services/socket.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/shared/utils/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/shared/utils/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/sidebar/sidebar.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular/frontend/src/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react/src/utils/graph/handleDragNDrop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/react/src/utils/graph/handleDragNDrop.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +81,7 @@
         <option value="tsconfig.json" />
         <option value="CSS File" />
         <option value="TypeScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -109,6 +132,10 @@
     &quot;accountId&quot;: &quot;a39cff49-0c60-4540-bc75-4e5d8036161d&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -131,17 +158,22 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Playwright.Smoke Tests.executor": "Run",
+    "Playwright.Smoke Tests.lobby page displays player information.executor": "Run",
+    "Playwright.Smoke Tests.lobby page.another player can join with shared url.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "dev",
     "ignore_missing_gitignore": "true",
     "javascript.nodejs.core.library.configured.version": "22.16.0",
     "javascript.nodejs.core.library.typings.version": "22.16.5",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/daniel/Desktop/Dev/thesis/angular/common/models",
+    "last_opened_file_path": "/Users/daniel/Desktop/Dev/thesis/angular/frontend/src/shared/utils",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -160,7 +192,7 @@
     "npm.start:backend.executor": "Run",
     "npm.start:frontend.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/Users/daniel/Desktop/Dev/thesis/angular/node_modules/prettier",
-    "settings.editor.selected.configurable": "configurable.tailwindcss",
+    "settings.editor.selected.configurable": "settings.sync",
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "/Users/daniel/Desktop/Dev/thesis/angular/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -177,51 +209,61 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/angular/frontend/src/shared/utils" />
       <recent name="$PROJECT_DIR$/angular/common/models" />
       <recent name="$PROJECT_DIR$/angular" />
       <recent name="$PROJECT_DIR$/src/angular/wikirun" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/angular/common/models" />
       <recent name="$PROJECT_DIR$/angular/backend/src/modules/algorithm" />
       <recent name="$PROJECT_DIR$/angular/backend/src/modules/lobby" />
       <recent name="$PROJECT_DIR$/angular/backend/src/modules" />
       <recent name="$PROJECT_DIR$/angular/common" />
-      <recent name="$PROJECT_DIR$/angular/backend" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/angular/frontend/src/shared/routes.ts" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start:frontend">
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/react/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
+  <component name="RunManager" selected="Playwright.Smoke Tests">
+    <configuration name="Smoke Tests" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/angular/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$/angular" />
       <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/angular/tests/smoke.spec.ts" />
+      <test-names>
+        <test-name value="Smoke Tests" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/angular/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="format" />
-      </scripts>
+    <configuration name="Smoke Tests.lobby page displays player information" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/angular/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$/angular" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/angular/tests/smoke.spec.ts" />
+      <test-names>
+        <test-name value="Smoke Tests" />
+        <test-name value="lobby page displays player information" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/angular/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="lint" />
-      </scripts>
+    <configuration name="Smoke Tests.lobby page.another player can join with shared url" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/angular/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$/angular" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/angular/tests/smoke.spec.ts" />
+      <test-names>
+        <test-name value="Smoke Tests" />
+        <test-name value="lobby page" />
+        <test-name value="another player can join with shared url" />
+      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="start:backend" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -246,20 +288,13 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Playwright.Smoke Tests" />
         <item itemvalue="npm.start:frontend" />
         <item itemvalue="npm.start:backend" />
-        <item itemvalue="npm.dev" />
-        <item itemvalue="npm.format" />
-        <item itemvalue="npm.lint" />
+        <item itemvalue="Playwright.Smoke Tests.lobby page.another player can join with shared url" />
+        <item itemvalue="Playwright.Smoke Tests.lobby page displays player information" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.27397.92" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>
@@ -295,7 +330,12 @@
       <workItem from="1760435617298" duration="1952000" />
       <workItem from="1760778514057" duration="172000" />
       <workItem from="1761302445023" duration="34000" />
-      <workItem from="1761302549542" duration="47846000" />
+      <workItem from="1761302549542" duration="47988000" />
+      <workItem from="1762173600066" duration="45325000" />
+      <workItem from="1762270493628" duration="63000" />
+      <workItem from="1762270557841" duration="6857000" />
+      <workItem from="1763551160331" duration="566000" />
+      <workItem from="1763551745673" duration="35074000" />
     </task>
     <task id="LOCAL-00001" summary="feat(react): move project">
       <option name="closed" value="true" />
@@ -345,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760302652645</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat(ws, fe): wip">
+      <option name="closed" value="true" />
+      <created>1761555236229</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1761555236229</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +433,8 @@
     <MESSAGE value="feat(backend): init backend" />
     <MESSAGE value="chore(git): update git ignore" />
     <MESSAGE value="refactor(hell): wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(hell): wip" />
+    <MESSAGE value="feat(ws, fe): wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ws, fe): wip" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

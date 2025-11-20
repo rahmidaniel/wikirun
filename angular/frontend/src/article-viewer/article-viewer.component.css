@@ -1,180 +1,182 @@
 @reference "../styles.css";
 
-.article-loading {
-  @apply blur-sm pointer-events-none cursor-none;
-}
+app-article-viewer {
+  .article-loading {
+    @apply blur-sm pointer-events-none cursor-none;
+  }
 
-.mw-parser-output {
-  @apply flex-auto w-11/12 overflow-y-auto mx-auto my-8;
-}
+  .mw-parser-output {
+    @apply flex-auto overflow-y-auto mx-8 my-8;
+  }
 
-/*External links should be non intractable, + new pages */
-.mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new, .mw-parser-output a.selflink
-{
-  @apply link link-error dark:link-error pointer-events-none cursor-none;
-}
+  /*External links should be non intractable, + new pages */
+  .mw-parser-output a[href*='//'], .mw-parser-output a[href*=':'], .mw-parser-output a.new, .mw-parser-output a.selflink
+  {
+    @apply link link-error dark:link-error pointer-events-none cursor-none;
+  }
 
-.mw-parser-output a {
-  @apply link link-primary dark:link-accent;
-}
+  .mw-parser-output a {
+    @apply link link-primary dark:link-accent;
+  }
 
-.mw-parser-output h1 {
-  @apply text-3xl font-semibold pt-4 pb-1 border-b;
-}
-.mw-parser-output h2 {
-  @apply text-2xl font-semibold pt-4 pb-1 border-b;
-}
-.mw-parser-output h3 {
-  @apply text-xl font-bold py-2;
-}
-.mw-parser-output h4 {
-  @apply font-bold py-2;
-}
+  .mw-parser-output h1 {
+    @apply text-3xl font-semibold pt-4 pb-1 border-b;
+  }
+  .mw-parser-output h2 {
+    @apply text-2xl font-semibold pt-4 pb-1 border-b;
+  }
+  .mw-parser-output h3 {
+    @apply text-xl font-bold py-2;
+  }
+  .mw-parser-output h4 {
+    @apply font-bold py-2;
+  }
 
-/* Wiki styles were replicated to taste */
+  /* Wiki styles were replicated to taste */
 
-.infobox,
-.sidebar {
-  @apply relative float-right clear-right ml-2 max-w-xs shadow-lg bg-base-100;
-}
-.infobox-title {
-  @apply font-bold text-xl;
-}
+  .infobox,
+  .sidebar {
+    @apply relative float-right clear-right ml-2 max-w-xs shadow-lg bg-base-100;
+  }
+  .infobox-title {
+    @apply font-bold text-xl;
+  }
 
-.infobox-image img {
-  @apply mx-auto;
-}
+  .infobox-image img {
+    @apply mx-auto;
+  }
 
-.infobox .summary {
-  @apply dark:btn-accent! btn-primary!;
-}
+  .infobox .summary {
+    @apply dark:btn-accent! btn-primary!;
+  }
 
-.sidebar {
-  @apply bg-base-100!;
-}
+  .sidebar {
+    @apply bg-base-100!;
+  }
 
-.wikitable,
-table {
-  @apply table table-zebra table-sm border-collapse w-fit my-4 border border-neutral;
+  .wikitable,
+  table {
+    @apply table table-zebra table-sm border-collapse w-fit my-4 border border-neutral;
+
+    ul {
+      @apply flex flex-wrap gap-2 list-inside ml-0;
+
+      li {
+        @apply list-disc pl-2;
+      }
+
+      li:first-child {
+        @apply list-none;
+      }
+    }
+  }
+
+  .tleft,
+  .floatleft {
+    @apply clear-left float-left m-2 bg-base-100;
+  }
+
+  .tright,
+  .floatright {
+    @apply clear-right float-right m-2 bg-base-100;
+  }
+
+  .trow {
+    @apply flex justify-between w-96!;
+  }
+
+  .thumbinner {
+    @apply card border rounded-md p-2 shadow-xl;
+  }
+
+  .thumbinner img {
+    @apply rounded-t-2xl bg-white;
+  }
+
+  .thumbcaption {
+    @apply m-2;
+  }
+
+  .gallery {
+    @apply flex flex-wrap justify-evenly mx-auto py-4;
+  }
+
+  .gallerycaption {
+    @apply font-extrabold flex-grow w-full text-center;
+  }
+
+  .gallerybox {
+    @apply card shadow-xl border m-4 flex-shrink-0 basis-auto;
+  }
+  .gallerytext {
+    @apply m-2 text-sm max-w-56;
+  }
+  .gallery img {
+    @apply mx-auto rounded-t-2xl;
+  }
+
+  .navbox,
+  .navbox th,
+  .navbox tr td {
+    @apply bg-base-100! border-base-100! table-zebra!;
+  }
+
+  blockquote {
+    @apply mx-auto px-16;
+  }
+
+  .quotebox {
+    @apply card border p-4 m-4 w-fit bg-base-200 max-w-1/2 overflow-auto max-h-96;
+  }
+
+  /* inlining and inverting math equations for dark mode*/
+  .mwe-math-fallback-image-inline {
+    @apply inline-block dark:invert-[1];
+  }
 
   ul {
-    @apply flex flex-wrap gap-2 list-inside ml-0;
+    @apply list-disc ml-8;
+  }
 
-    li {
-      @apply list-disc pl-2;
+  ol {
+    @apply list-decimal ml-8;
+  }
+
+  dd {
+    margin-left: 1.6em;
+    margin-bottom: 0.1em;
+  }
+
+  p {
+    @apply mb-2;
+  }
+
+  .mw-halign-left {
+    @apply float-left clear-left ml-0;
+  }
+
+  .mw-halign-right,
+  figure:not(.mw-halign-left):not(.mw-halign-center) {
+    @apply float-right clear-right mr-0;
+  }
+
+  .mw-halign-center {
+    @apply block mx-auto clear-both;
+  }
+
+  figure {
+    @apply card border p-4 m-4 w-fit bg-base-300;
+
+    img {
+      @apply mx-auto dark:bg-neutral-content;
     }
 
-    li:first-child {
-      @apply list-none;
+    > .mw-file-description {
+      @apply border border-neutral-content;
     }
-  }
-}
 
-.tleft,
-.floatleft {
-  @apply clear-left float-left m-2 bg-base-100;
-}
-
-.tright,
-.floatright {
-  @apply clear-right float-right m-2 bg-base-100;
-}
-
-.trow {
-  @apply flex justify-between w-96!;
-}
-
-.thumbinner {
-  @apply card border rounded-md p-2 shadow-xl;
-}
-
-.thumbinner img {
-  @apply rounded-t-2xl bg-white;
-}
-
-.thumbcaption {
-  @apply m-2;
-}
-
-.gallery {
-  @apply flex flex-wrap justify-evenly mx-auto py-4;
-}
-
-.gallerycaption {
-  @apply font-extrabold flex-grow w-full text-center;
-}
-
-.gallerybox {
-  @apply card shadow-xl border m-4 flex-shrink-0 basis-auto;
-}
-.gallerytext {
-  @apply m-2 text-sm;
-}
-.gallery img {
-  @apply mx-auto rounded-t-2xl;
-}
-
-.navbox,
-.navbox th,
-.navbox tr td {
-  @apply bg-base-100! border-base-100! table-zebra!;
-}
-
-blockquote {
-  @apply mx-auto px-16;
-}
-
-.quotebox {
-  @apply card border p-4 m-4 w-fit bg-base-200 max-w-1/2 overflow-auto max-h-96;
-}
-
-/* inlining and inverting math equations for dark mode*/
-.mwe-math-fallback-image-inline {
-  @apply inline-block dark:invert-[1];
-}
-
-ul {
-  @apply list-disc ml-8;
-}
-
-ol {
-  @apply list-decimal ml-8;
-}
-
-dd {
-  margin-left: 1.6em;
-  margin-bottom: 0.1em;
-}
-
-p {
-  @apply mb-2;
-}
-
-.mw-halign-left {
-  @apply float-left clear-left ml-0;
-}
-
-.mw-halign-right,
-figure:not(.mw-halign-left):not(.mw-halign-center) {
-  @apply float-right clear-right mr-0;
-}
-
-.mw-halign-center {
-  @apply block mx-auto clear-both;
-}
-
-figure {
-  @apply card border p-4 m-4 w-fit bg-base-300;
-
-  img {
-    @apply mx-auto dark:bg-neutral-content;
-  }
-
-  > .mw-file-description {
-    @apply border border-neutral-content;
-  }
-
-  figcaption {
-    @apply text-sm w-0 min-w-full break-words;
+    figcaption {
+      @apply text-sm w-0 min-w-full break-words;
+    }
   }
 }

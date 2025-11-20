@@ -20,7 +20,6 @@ export class GameGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   private readonly logger = new Logger(GameGateway.name);
 
-  // Track which socket is in which lobby for cleanup
   private socketToLobby = new Map<string, string>();
   private socketToPlayer = new Map<string, string>();
 
@@ -137,7 +136,7 @@ export class GameGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('article-visited')
-  handleArticleVisited(
+  async handleArticleVisited(
     @ConnectedSocket() client: Socket,
     @MessageBody()
     data: { playerId: string; article: Article }
@@ -150,20 +149,8 @@ export class GameGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     const result = this.lobbyService.trackArticleVisit(data.playerId, lobbyCode, data.article);
 
-    if (!result) {
-      return;
-    }
-
-    // todo this can be sent per player too, just to get their current progress
-    this.io.to(lobbyCode).emit('player-progress', {
-      playerId: data.playerId,
-      currentArticle: data.article,
-      articleCount: result.playerRun.articles.length,
-      isWinner: result.isWinner,
-    });
-
-    if (result.isWinner) {
-      const endResult = this.lobbyService.endGame(lobbyCode, data.playerId);
+    if (result?.isWinner) {
+      const endResult = await this.lobbyService.endGame(lobbyCode, data.playerId);
       this.io.to(lobbyCode).emit('game-ended', endResult);
     }
   }

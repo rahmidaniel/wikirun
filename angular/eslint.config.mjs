@@ -90,7 +90,7 @@ export default tseslint.config(
       eqeqeq: 'error',
       'no-array-constructor': 'error',
       'no-lonely-if': 'warn',
-      'no-magic-numbers': ['warn', { ignore: [0, 1], enforceConst: true }],
+      'no-magic-numbers': 'off',
       'no-return-assign': 'warn',
       'no-var': 'error',
       'no-useless-return': 'warn',

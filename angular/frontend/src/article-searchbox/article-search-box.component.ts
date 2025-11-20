@@ -12,8 +12,8 @@ import { ApiService } from '../shared/services/api.service';
 @Component({
   selector: 'app-article-search-box',
   imports: [AutoComplete, FloatLabel, FormsModule],
+  host: { class: 'flex-grow' },
   templateUrl: './article-search-box.component.html',
-  styleUrl: './article-search-box.component.css',
 })
 export class ArticleSearchBoxComponent {
   private readonly apiService = inject(ApiService);

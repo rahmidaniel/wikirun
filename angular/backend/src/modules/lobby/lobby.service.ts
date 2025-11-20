@@ -1,15 +1,20 @@
 import { Injectable, Logger } from '@nestjs/common';
 
-import { Article, GameState, Lobby, LobbyResponse, Player, PlayerRun } from '@common';
+import { Article, GameResult, GameState, Lobby, LobbyResponse, Player, PlayerRun } from '@common';
+import chroma from 'chroma-js';
 import { nanoid } from 'nanoid';
 
+import { AlgorithmService } from '../algorithm/algorithm.service';
 import { DBService } from '../db/db.service';
 
 @Injectable()
 export class LobbyService {
   private readonly logger = new Logger(LobbyService.name);
 
-  constructor(private readonly dbService: DBService) {}
+  constructor(
+    private readonly dbService: DBService,
+    private readonly algorithmService: AlgorithmService
+  ) {}
 
   private toLobbyResponse(lobby: Lobby): LobbyResponse {
     return {
@@ -32,9 +37,10 @@ export class LobbyService {
 
     this.dbService.createPlayer({
       id: hostId,
-      name: undefined,
+      name: `Player ${lobby.playerIds.length}`,
       socketId: undefined,
       lobbyId: code,
+      color: chroma.random().hex('rgba'),
     });
 
     return this.toLobbyResponse(lobby);
@@ -54,15 +60,17 @@ export class LobbyService {
     }
 
     const playerId = crypto.randomUUID();
-    this.dbService.createPlayer({
-      id: playerId,
-      name: undefined,
-      socketId: undefined,
-      lobbyId: code,
-    });
 
     lobby.playerIds.push(playerId);
     this.dbService.updateLobby(lobby);
+
+    this.dbService.createPlayer({
+      id: playerId,
+      name: `Player ${lobby.playerIds.length}`,
+      socketId: undefined,
+      lobbyId: code,
+      color: chroma.random().hex('rgba'),
+    });
 
     return this.toLobbyResponse(lobby);
   }
@@ -135,11 +143,13 @@ export class LobbyService {
     lobby.startedAt = start;
     this.dbService.updateLobby(lobby);
 
+    void this.algorithmService.startPathFinding(lobbyCode, lobby.articles!.start, lobby.articles!.end);
+
     lobby.playerIds.forEach((playerId) => {
       const player = this.dbService.getPlayerById(playerId)!;
-      this.dbService.createPlayerRun({
+      this.dbService.updatePlayerRun({
         ...player,
-        articles: [],
+        articles: [{ ...lobby.articles!.start, time: start }],
         time: { start, end: 0 },
       });
     });
@@ -170,43 +180,23 @@ export class LobbyService {
     return { playerRun, isWinner };
   }
 
-  endGame(lobbyCode: string, winnerId: string): { winner: Player; finalStandings: PlayerRun[] } {
+  async endGame(lobbyCode: string, winnerId: string): Promise<GameResult> {
     const lobby = this.dbService.getLobbyByCode(lobbyCode)!;
     const endTime = Date.now();
 
     lobby.status = GameState.RESULTS;
     this.dbService.updateLobby(lobby);
 
-    const winnerRun = this.dbService.getPlayerRun(winnerId, lobbyCode)!;
-    winnerRun.time.end = endTime;
-    this.dbService.updatePlayerRun(winnerRun);
+    const playerRun = this.dbService.getPlayerRun(winnerId, lobbyCode)!;
 
-    const allRuns = this.dbService.getPlayerRunsForLobby(lobbyCode);
-    // Sort players by: 1) completed first, 2) fastest time, 3) most articles visited
-    const finalStandings = allRuns.sort((a, b) => {
-      const aCompleted = a.time.end > 0;
-      const bCompleted = b.time.end > 0;
-
-      // Completed players rank above incomplete
-      if (aCompleted && !bCompleted) {
-        return -1;
-      }
-      if (!aCompleted && bCompleted) {
-        return 1;
-      }
-
-      // Both completed: sort by fastest time
-      if (aCompleted && bCompleted) {
-        return a.time.end - a.time.start - (b.time.end - b.time.start);
-      }
-
-      // Neither completed: sort by most progress (articles visited)
-      return b.articles.length - a.articles.length;
-    });
+    const winner = this.dbService.updatePlayerRun({ ...playerRun, time: { ...playerRun.time, end: endTime } });
+    const playerRuns = this.calculatePlayerOrder(this.dbService.getPlayerRunsForLobby(lobbyCode));
+    const optimalPathResult = await this.algorithmService.getResult(lobbyCode);
 
     return {
-      winner: this.dbService.getPlayerById(winnerId)!,
-      finalStandings,
+      winner,
+      optimalPathResult,
+      playerRuns,
     };
   }
 
@@ -216,5 +206,25 @@ export class LobbyService {
 
   getPlayers(lobbyCode: string): Player[] {
     return this.dbService.getPlayersForLobby(lobbyCode);
+  }
+
+  private calculatePlayerOrder(playerRuns: PlayerRun[]) {
+    return playerRuns.sort((a, b) => {
+      const aDone = a.time.end > 0;
+      const bDone = b.time.end > 0;
+
+      if (aDone && !bDone) {
+        return -1;
+      }
+      if (!aDone && bDone) {
+        return 1;
+      }
+
+      if (aDone && bDone) {
+        return a.time.end - a.time.start - (b.time.end - b.time.start);
+      }
+
+      return b.articles.length - a.articles.length;
+    });
   }
 }

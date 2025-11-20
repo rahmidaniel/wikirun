@@ -1,4 +1,4 @@
-export * from './app-state.enum';
+export * from './game-state.enum';
 export * from './article.interface';
 export * from './article-result.interface';
 export * from './link.interface';
@@ -10,3 +10,5 @@ export * from './player.interface';
 export * from './lobby.interface';
 export * from './lobby-response.interface';
 export * from './player-run.interface';
+export * from './path-result.interface';
+export * from './game-result.interface';

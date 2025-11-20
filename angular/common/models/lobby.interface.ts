@@ -1,5 +1,5 @@
-import { GameState } from '@common/models/app-state.enum';
 import { Article } from '@common/models/article.interface';
+import { GameState } from '@common/models/game-state.enum';
 
 export interface Lobby {
   id: string;

@@ -1,0 +1,144 @@
+@let optimalPath = gameStateService.optimalPath();
+@let playerRun = gameStateService.currentPlayerRun();
+
+@if (!optimalPath || !playerRun) {
+  <div class="flex w-full flex-col mt-2 h-40 rounded-box bg-base-200">
+    <label class="btn btn-ghost animate-pulse m-auto">Waiting for results...</label>
+  </div>
+} @else {
+  <div class="stats stats-horizontal shadow mb-4">
+    <div class="stat w-[30vw] place-items-center">
+      <div class="stat-title">Your Path Length</div>
+      <div class="stat-value">{{ playerRun.articles.length }}</div>
+    </div>
+    <div class="stat">
+      <div class="stat-title">Your Time</div>
+      <div class="stat-value" [class]="playerRun.time.end ? 'text-green-600' : 'text-error'">
+        {{ playerRun.time.end ? (playerRun.time.end - playerRun.time.start | date: 'mm:ss:SS') : 'DNF' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="stats stats-horizontal shadow mb-4">
+    <div class="stat w-[30vw] place-items-center">
+      <div class="stat-title">Optimal Path Length</div>
+      <div class="stat-value text-primary">{{ optimalPath.length }}</div>
+    </div>
+    <div class="stat">
+      <div class="stat-title">Algorithm Time</div>
+      <div class="stat-value text-primary">{{ optimalPath.time | date: 'mm:ss.SS' }}</div>
+    </div>
+  </div>
+
+  @if ((gameStateService.gameResults()?.length ?? 0) > 1) {
+    <div class="overflow-x-auto mb-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Place</th>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Path Length</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (run of gameStateService.gameResults(); track run.id; let index = $index) {
+            @let isPlayer = run.id === playerRun?.id;
+            <tr [class]="isPlayer ? 'bg-base-300' : 'bg-base-200'">
+              <th>{{ index }}</th>
+              <td>
+                <div class="flex items-center gap-2">
+                  <span
+                    class="status status-xl"
+                    [class.animate-pulse]="isPlayer"
+                    [style.background-color]="run.color"></span>
+                  <span>{{ run.name }}</span>
+                </div>
+              </td>
+              <td>{{ run.time.end ? (run.time.end - run.time.start | date: 'mm:ss:SS') : 'DNF' }}</td>
+              <td>{{ run.articles.length }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  <div class="h-[60vh] w-full mx-auto border-black border-2">
+    <div #containerRef class="w-full h-full bg-neutral-50"></div>
+  </div>
+  <div class="form-control w-2/3 mx-auto p-2">
+    <ng-container *ngTemplateOutlet="controller"></ng-container>
+  </div>
+}
+
+<ng-template #controller>
+  <div class="flex flex-col gap-4 mt-2">
+    <div class="form-control ml-3">
+      <label class="label rounded-btn cursor-pointer">
+        <span class="label-text text-xl">Simulation</span>
+        <label class="swap bg-base-300">
+          <input type="checkbox" [checked]="simRunning()" (change)="toggleSimRunning()" />
+          <div class="swap-on btn btn-success rounded-btn">ON</div>
+          <div class="swap-off btn btn-error rounded-btn">OFF</div>
+        </label>
+      </label>
+    </div>
+
+    <div class="bg-base-100 border-base-300 collapse border">
+      <input type="checkbox" class="peer" />
+      <div class="collapse-title text-neutral peer-checked:bg-base-300">Simulation Settings</div>
+      <div class="collapse-content peer-checked:bg-base-300">
+        <form
+          class="form-control flex flex-col gap-4 px-4 pb-4 mt-2"
+          (submit)="$event.preventDefault(); fa2Settings.set(currentSettings())"
+          (reset)="$event.preventDefault(); currentSettings.set(fa2Settings())">
+          <label class="label">
+            <span class="label-text tooltip" data-tip="Adjust node sizes during layout. Default true.">
+              Adjust Sizes
+            </span>
+            <input
+              type="checkbox"
+              name="adjustSizes"
+              [checked]="currentSettings().adjustSizes"
+              (change)="handleFA2ParamChange($event)"
+              class="checkbox checkbox-primary" />
+          </label>
+          <label class="label">
+            <span class="label-text tooltip" data-tip="Distribute repulsion between connected nodes. Default true.">
+              Repulsion distribution
+            </span>
+            <input
+              type="checkbox"
+              name="outboundAttractionDistribution"
+              [checked]="currentSettings().outboundAttractionDistribution"
+              (change)="handleFA2ParamChange($event)"
+              class="checkbox checkbox-primary" />
+          </label>
+          <label class="label transition-opacity duration-500 ease-in-out delay-500">
+            <span class="label-text" data-tip="Strength of the layout’s gravity. Default 5"> Gravity </span>
+            <input
+              type="number"
+              name="gravity"
+              [value]="currentSettings().gravity"
+              (change)="handleFA2ParamChange($event)"
+              class="input input-sm" />
+          </label>
+          <label class="label">
+            <span class="label-text" data-tip="'Slowed' time multiplier. Default 10"> Slow Down </span>
+            <input
+              type="number"
+              name="slowDown"
+              [value]="currentSettings().slowDown"
+              (change)="handleFA2ParamChange($event)"
+              class="input input-sm" />
+          </label>
+
+          <div class="flex gap-2 mt-2">
+            <button type="submit" class="btn btn-primary flex-1">Apply</button>
+            <button type="reset" class="btn btn-error flex-1">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
