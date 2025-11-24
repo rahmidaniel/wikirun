@@ -1,0 +1,201 @@
+<mxfile host="app.diagrams.net">
+  <!-- Diagram 1: Lobby & Configuration -->
+  <diagram id="lobby_config" name="Lobby and Configuration">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <mxCell id="lc_host" value="Host" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc_player" value="Player" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc_frontend" value="Frontend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc_backend" value="Backend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="550" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc_wiki" value="Wikipedia API" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+
+        <!-- Create Lobby -->
+        <mxCell id="lc_msg1" value="Create Lobby" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_host" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="130" as="sourcePoint"/><mxPoint x="0" y="130" as="targetPoint"/><Array as="points"><mxPoint x="180" y="130"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg2" value="POST /lobby" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_frontend" target="lc_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="150" as="sourcePoint"/><mxPoint x="0" y="150" as="targetPoint"/><Array as="points"><mxPoint x="480" y="150"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg3" value="Lobby Code" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="lc_backend" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="170" as="sourcePoint"/><mxPoint x="0" y="170" as="targetPoint"/><Array as="points"><mxPoint x="480" y="170"/></Array></mxGeometry>
+        </mxCell>
+
+        <!-- Join Lobby -->
+        <mxCell id="lc_msg4" value="Join (Code)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_player" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="210" as="sourcePoint"/><mxPoint x="0" y="210" as="targetPoint"/><Array as="points"><mxPoint x="330" y="210"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg5" value="WS: join-lobby" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_frontend" target="lc_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="230" as="sourcePoint"/><mxPoint x="0" y="230" as="targetPoint"/><Array as="points"><mxPoint x="480" y="230"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg6" value="WS: lobby-updated (Broadcast)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_backend" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="250" as="sourcePoint"/><mxPoint x="0" y="250" as="targetPoint"/><Array as="points"><mxPoint x="480" y="250"/></Array></mxGeometry>
+        </mxCell>
+
+        <!-- Search Article -->
+        <mxCell id="lc_msg7" value="Search Article" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_host" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="290" as="sourcePoint"/><mxPoint x="0" y="290" as="targetPoint"/><Array as="points"><mxPoint x="180" y="290"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg8" value="GET /search?query=..." style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_frontend" target="lc_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="310" as="sourcePoint"/><mxPoint x="0" y="310" as="targetPoint"/><Array as="points"><mxPoint x="480" y="310"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg9" value="OpenSearch API" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_backend" target="lc_wiki">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="330" as="sourcePoint"/><mxPoint x="0" y="330" as="targetPoint"/><Array as="points"><mxPoint x="650" y="330"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg10" value="Search Results" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="lc_wiki" target="lc_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="350" as="sourcePoint"/><mxPoint x="0" y="350" as="targetPoint"/><Array as="points"><mxPoint x="650" y="350"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg11" value="Return Results" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="lc_backend" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="370" as="sourcePoint"/><mxPoint x="0" y="370" as="targetPoint"/><Array as="points"><mxPoint x="480" y="370"/></Array></mxGeometry>
+        </mxCell>
+
+        <!-- Set Articles -->
+        <mxCell id="lc_msg12" value="Select Start/End" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_host" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="410" as="sourcePoint"/><mxPoint x="0" y="410" as="targetPoint"/><Array as="points"><mxPoint x="180" y="410"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg13" value="WS: set-articles" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_frontend" target="lc_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="430" as="sourcePoint"/><mxPoint x="0" y="430" as="targetPoint"/><Array as="points"><mxPoint x="480" y="430"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="lc_msg14" value="WS: lobby-updated" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lc_backend" target="lc_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="450" as="sourcePoint"/><mxPoint x="0" y="450" as="targetPoint"/><Array as="points"><mxPoint x="480" y="450"/></Array></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- Diagram 2: Gameplay Loop -->
+  <diagram id="gameplay_loop" name="Gameplay Loop">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="gp_host" value="Host" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="gp_player" value="Player" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="gp_frontend" value="Frontend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="gp_backend" value="Backend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="550" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="gp_wiki" value="Wikipedia API" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+
+        <!-- Start Game -->
+        <mxCell id="gp_msg1" value="Start Game" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="gp_host" target="gp_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="130" as="sourcePoint"/><mxPoint x="0" y="130" as="targetPoint"/><Array as="points"><mxPoint x="180" y="130"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg2" value="WS: start-game" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="gp_frontend" target="gp_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="150" as="sourcePoint"/><mxPoint x="0" y="150" as="targetPoint"/><Array as="points"><mxPoint x="480" y="150"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg3" value="Trigger PathFinding (Async)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1" source="gp_backend" target="gp_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="170" as="sourcePoint"/><mxPoint x="0" y="190" as="targetPoint"/><Array as="points"><mxPoint x="610" y="170"/><mxPoint x="610" y="190"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg4" value="WS: game-started" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="gp_backend" target="gp_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="210" as="sourcePoint"/><mxPoint x="0" y="210" as="targetPoint"/><Array as="points"><mxPoint x="480" y="210"/></Array></mxGeometry>
+        </mxCell>
+
+        <!-- Navigation Loop -->
+        <mxCell id="gp_msg5" value="Click Link" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="gp_player" target="gp_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="260" as="sourcePoint"/><mxPoint x="0" y="260" as="targetPoint"/><Array as="points"><mxPoint x="330" y="260"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg6" value="GET /article?pageTitle=..." style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="gp_frontend" target="gp_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="280" as="sourcePoint"/><mxPoint x="0" y="280" as="targetPoint"/><Array as="points"><mxPoint x="480" y="280"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg7" value="Parse API" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="gp_backend" target="gp_wiki">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="300" as="sourcePoint"/><mxPoint x="0" y="300" as="targetPoint"/><Array as="points"><mxPoint x="650" y="300"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg8" value="Article HTML (Raw)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="gp_wiki" target="gp_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="320" as="sourcePoint"/><mxPoint x="0" y="320" as="targetPoint"/><Array as="points"><mxPoint x="650" y="320"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg9" value="Return ArticleResult" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="gp_backend" target="gp_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="340" as="sourcePoint"/><mxPoint x="0" y="340" as="targetPoint"/><Array as="points"><mxPoint x="480" y="340"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg10" value="Sanitize HTML &amp; Links" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1" source="gp_frontend" target="gp_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="360" as="sourcePoint"/><mxPoint x="0" y="380" as="targetPoint"/><Array as="points"><mxPoint x="460" y="360"/><mxPoint x="460" y="380"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg11" value="WS: article-visited" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="gp_frontend" target="gp_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="400" as="sourcePoint"/><mxPoint x="0" y="400" as="targetPoint"/><Array as="points"><mxPoint x="480" y="400"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="gp_msg12" value="Update Player Run" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1" source="gp_backend" target="gp_backend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="420" as="sourcePoint"/><mxPoint x="0" y="440" as="targetPoint"/><Array as="points"><mxPoint x="610" y="420"/><mxPoint x="610" y="440"/></Array></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- Diagram 3: Game End & Analysis -->
+  <diagram id="game_end" name="Game End and Analysis">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="ge_player" value="Player (Winner)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="ge_frontend" value="Frontend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="ge_lobby" value="LobbyService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="100" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="ge_algo" value="AlgorithmService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="550" y="80" width="120" height="600" as="geometry"/>
+        </mxCell>
+
+        <!-- Trigger End -->
+        <mxCell id="ge_msg0" value="Click Link (Winner)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="ge_player" target="ge_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="110" as="sourcePoint"/><mxPoint x="0" y="110" as="targetPoint"/><Array as="points"><mxPoint x="180" y="110"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="ge_msg1" value="WS: article-visited" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="ge_frontend" target="ge_lobby">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="130" as="sourcePoint"/><mxPoint x="0" y="130" as="targetPoint"/><Array as="points"><mxPoint x="350" y="130"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="ge_msg2" value="trackArticleVisit -> Check Winner (True)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1" source="ge_lobby" target="ge_lobby">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="150" as="sourcePoint"/><mxPoint x="0" y="170" as="targetPoint"/><Array as="points"><mxPoint x="450" y="150"/><mxPoint x="450" y="170"/></Array></mxGeometry>
+        </mxCell>
+
+        <!-- Analysis -->
+        <mxCell id="ge_msg3" value="endGame(lobbyCode)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="ge_lobby" target="ge_lobby">
+           <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="190" as="sourcePoint"/><mxPoint x="0" y="210" as="targetPoint"/><Array as="points"><mxPoint x="460" y="190"/><mxPoint x="460" y="210"/></Array></mxGeometry>
+        </mxCell>
+
+        <mxCell id="ge_msg4" value="getResult(lobbyCode)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="ge_lobby" target="ge_algo">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="240" as="sourcePoint"/><mxPoint x="0" y="240" as="targetPoint"/><Array as="points"><mxPoint x="500" y="240"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="ge_msg5" value="Await Existing Promise" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1" source="ge_algo" target="ge_algo">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="260" as="sourcePoint"/><mxPoint x="0" y="280" as="targetPoint"/><Array as="points"><mxPoint x="620" y="260"/><mxPoint x="620" y="280"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="ge_msg6" value="Return Optimal Path" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="ge_algo" target="ge_lobby">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="300" as="sourcePoint"/><mxPoint x="0" y="300" as="targetPoint"/><Array as="points"><mxPoint x="500" y="300"/></Array></mxGeometry>
+        </mxCell>
+
+        <mxCell id="ge_msg7" value="calculatePlayerOrder()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1" source="ge_lobby" target="ge_lobby">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="330" as="sourcePoint"/><mxPoint x="0" y="350" as="targetPoint"/><Array as="points"><mxPoint x="460" y="330"/><mxPoint x="460" y="350"/></Array></mxGeometry>
+        </mxCell>
+
+        <!-- Broadcast -->
+        <mxCell id="ge_msg8" value="WS: game-ended (Results)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="ge_lobby" target="ge_frontend">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="380" as="sourcePoint"/><mxPoint x="0" y="380" as="targetPoint"/><Array as="points"><mxPoint x="350" y="380"/></Array></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

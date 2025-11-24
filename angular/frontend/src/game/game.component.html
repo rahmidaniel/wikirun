@@ -1,10 +1,2 @@
 <app-sidebar class="min-w-1/4"></app-sidebar>
-
-@switch (gameStateService.state()) {
-  @case (GameState.IN_GAME) {
-    <app-article-viewer class="max-w-4/5 overflow-x-auto"></app-article-viewer>
-  }
-  @case (GameState.RESULTS) {
-    <app-graph-viewer class="flex flex-col mx-8 justify-evenly w-full h-full"></app-graph-viewer>
-  }
-}
+<app-article-viewer class="max-w-4/5 overflow-x-auto"></app-article-viewer>

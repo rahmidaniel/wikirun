@@ -146,6 +146,8 @@ export class GameStateService {
 
     this.updateArticle(lobby.articles!.start);
     this.startTimer();
+
+    void this.router.navigate([AppRoutes.game]);
   }
 
   private handleGameEnd(result: GameResult): void {
@@ -155,6 +157,8 @@ export class GameStateService {
     this.winner.set(result.winner);
     this.optimalPath.set(result.optimalPathResult);
     this.playerArticleHistories.set(new Map(result.playerRuns.map((run) => [run.id, run.articles])));
+
+    void this.router.navigate([AppRoutes.results]);
   }
 
   private startTimer(): void {

@@ -16,6 +16,10 @@ export const routes: Routes = [
     loadComponent: () => import('../game/game.component').then((m) => m.GameComponent),
   },
   {
+    path: AppRoutes.results,
+    loadComponent: () => import('../results/results.component').then((m) => m.ResultsComponent),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

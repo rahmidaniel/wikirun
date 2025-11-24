@@ -43,12 +43,6 @@ export class LobbyComponent {
         void this.joinLobby(paramCode);
       }
     });
-
-    effect(() => {
-      if (this.gameStateService.state() === GameState.IN_GAME) {
-        void this.router.navigate([AppRoutes.game]);
-      }
-    });
   }
 
   async joinLobby(code: string) {
